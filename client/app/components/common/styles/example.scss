@@ -1,0 +1,9 @@
+.Example {
+	margin-top: 2rem;
+
+	.nested-class {
+		&:hover {
+			color: red;
+		}
+	}
+}
