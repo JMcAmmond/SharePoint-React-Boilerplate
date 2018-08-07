@@ -1,8 +1,8 @@
 /*********************************************************
- *					      IMPORTANT!
+ *                        IMPORTANT!
  *					
- *          This is a Reactjs application using Redux
- * 			and intended for use on SharePoint sites
+ *        This is a Reactjs application using Redux
+ *        and intended for use on SharePoint sites
  *  
  ********************************************************/
 
@@ -54,8 +54,6 @@ class App extends React.Component {
 /**
  * Wait for SharePoint functions to load before rendering the application
  */
-/* SP.SOD.executeFunc( 'sp.js', 'SP.ClientContext', function() {
+SP.SOD.executeFunc( 'sp.js', 'SP.ClientContext', function() {
 	render(<App/>, document.getElementById('app'));
-}); */
-
-render(<App/>, document.getElementById('app'));
+});
