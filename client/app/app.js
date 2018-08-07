@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import Loadable from 'react-loadable';
 import { HashRouter, Route, Link } from "react-router-dom";
 
+
 import './app.scss';
 
 function Loading() {
@@ -35,7 +36,7 @@ export default class Application extends React.Component {
 				<div className="Application">
 					<nav className="site-navigation">
 						<ul>
-							<li><Link to="/">Home</Link></li>
+							<li><Link to="/"><i className="fa fa-camera"/> Home</Link></li>
 							<li><Link to="/example">Example</Link></li>
 							<li><Link to="/about">About</Link></li>
 						</ul>
