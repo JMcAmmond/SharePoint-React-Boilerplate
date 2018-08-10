@@ -1,24 +1,9 @@
 //Main application wrapper
 #app {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 
-	* {
-		box-sizing: border-box;
-	}
-}
-
-//Sharepoint page override
-.ms-webpartPage-root {
-	border-spacing: 5px 0 !important;
-}
-#DeltaPlaceHolderMain > div:nth-child(2) {
-	display: table;
-	border-spacing: 5px 0;
-	width: 100%;
-}
-
-//Print settings
-@media print {
-
+    * {
+        box-sizing: border-box;
+    }
 }

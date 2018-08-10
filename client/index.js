@@ -54,8 +54,6 @@ class App extends React.Component {
 /**
  * Wait for SharePoint functions to load before rendering the application
  */
-/* SP.SOD.executeFunc( 'sp.js', 'SP.ClientContext', function() {
+SP.SOD.executeFunc( 'sp.js', 'SP.ClientContext', function() {
 	render(<App/>, document.getElementById('app'));
-}); */
-
-render(<App/>, document.getElementById('app'));
+});

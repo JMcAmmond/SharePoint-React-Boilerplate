@@ -1,6 +1,6 @@
 {
-  "name": "SharePoint-Reactjs",
-  "version": "2.0.0",
+  "name": "sharepoint-reactjs",
+  "version": "1.0.0",
   "description": "SharePoint Reactjs Redux SCSS Webpack4",
   "main": "client/index.js",
   "scripts": {
@@ -12,7 +12,6 @@
   "license": "MIT",
   "dependencies": {
     "es6-promise": "^4.1.1",
-    "hoek": "^4.2.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "react": "^16.2.0",
@@ -33,11 +32,15 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.8.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "sass-loader": "^7.1.0",
     "spsave": "^3.1.5",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0",
     "webpack-shell-plugin": "^0.5.0"

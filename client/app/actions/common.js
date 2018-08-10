@@ -1,4 +1,3 @@
-
 import Api from '../lib/api';
 import * as types from './types';
 import cloneDeep from 'lodash/cloneDeep';
