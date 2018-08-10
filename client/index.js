@@ -1,8 +1,8 @@
 /*********************************************************
- *					      IMPORTANT!
+ *                        IMPORTANT!
  *					
- *          This is a Reactjs application using Redux
- * 			and intended for use on SharePoint sites
+ *        This is a Reactjs application using Redux
+ *        and intended for use on SharePoint sites
  *  
  ********************************************************/
 
