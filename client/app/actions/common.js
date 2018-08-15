@@ -10,15 +10,15 @@ import find from 'lodash/find';
  * @param {Number} itemId 
  */
 export function attachFile(listName, newFile, itemId) {
-	return Api.postFile(`
+    return Api.postFile(`
         ${APP_CONFIG.site.url}/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/add(FileName='${newFile.filename}')`,
-		newFile.data,
-		newFile.size
-	).then(function (resp) {
-		return resp;
-	}).catch(function (ex) {
-		return ex;
-	})
+        newFile.data,
+        newFile.size
+    ).then(function (resp) {
+        return resp;
+    }).catch(function (ex) {
+        return ex;
+    })
 }
 
 /**
@@ -28,11 +28,11 @@ export function attachFile(listName, newFile, itemId) {
  * @param {Number} itemId 
  */
 export function deleteAttachment(listName, fileName, itemId) {
-	return Api.delete(`
+    return Api.delete(`
         ${APP_CONFIG.site.url}/_api/web/lists/getbytitle('${listName}')/items(${itemId})/AttachmentFiles/getByFileName('${fileName}')`
-	).then(function (resp) {
-		return resp;
-	}).catch(function (ex) {
-		return ex;
-	})
+    ).then(function (resp) {
+        return resp;
+    }).catch(function (ex) {
+        return ex;
+    })
 }

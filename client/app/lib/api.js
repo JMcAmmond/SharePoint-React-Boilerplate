@@ -2,68 +2,68 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 export default class Api {
-	/* HEADERS */
-	static headers() {
-		UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, _spFormDigestRefreshInterval);
+    /* HEADERS */
+    static headers() {
+        UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, _spFormDigestRefreshInterval);
 
-		return {
-			'Accept': 'application/json;odata=verbose',
-			'Content-Type': 'application/json;odata=verbose',
-			'dataType': 'json',
-			"X-RequestDigest": document.getElementById('__REQUESTDIGEST').value
-		}
-	}
-	static fileHeaders(size) {
-		let interval = _spFormDigestRefreshInterval || 1440000;
-		UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, interval);
+        return {
+            'Accept': 'application/json;odata=verbose',
+            'Content-Type': 'application/json;odata=verbose',
+            'dataType': 'json',
+            "X-RequestDigest": document.getElementById('__REQUESTDIGEST').value
+        }
+    }
+    static fileHeaders(size) {
+        let interval = _spFormDigestRefreshInterval || 1440000;
+        UpdateFormDigest(_spPageContextInfo.webServerRelativeUrl, interval);
 
-		return {
-			'Accept': 'application/json;odata=verbose',
-			'Content-Type': 'application/json;odata=verbose',
-			"X-RequestDigest": document.getElementById('__REQUESTDIGEST').value,
-			"content-length": size
-		}
-	}
+        return {
+            'Accept': 'application/json;odata=verbose',
+            'Content-Type': 'application/json;odata=verbose',
+            "X-RequestDigest": document.getElementById('__REQUESTDIGEST').value,
+            "content-length": size
+        }
+    }
 
-	/* METHODS */
-	static get(url) {
-		return this.xhr(url, null, 'GET');
-	}
-	static post(url, params) {
-		return this.xhr(url, params, 'POST');
-	}
-	static postFile(url, data, size) {
-		return this.xhrFile(url, data, size, 'POST');
-	}
-	static delete(url) {
-		return this.xhr(url, null, 'DELETE');
-	}
+    /* METHODS */
+    static get(url) {
+        return this.xhr(url, null, 'GET');
+    }
+    static post(url, params) {
+        return this.xhr(url, params, 'POST');
+    }
+    static postFile(url, data, size) {
+        return this.xhrFile(url, data, size, 'POST');
+    }
+    static delete(url) {
+        return this.xhr(url, null, 'DELETE');
+    }
 
-	/* FETCH ACTIONS */
-	static xhr(url, params, verb) {
-		let options = Object.assign({method: verb}, params ? { body: JSON.stringify(params) } : null );
-			options.headers = Api.headers();
-			options.credentials = 'same-origin';
+    /* FETCH ACTIONS */
+    static xhr(url, params, verb) {
+        let options = Object.assign({method: verb}, params ? { body: JSON.stringify(params) } : null );
+            options.headers = Api.headers();
+            options.credentials = 'same-origin';
 
-		return fetch(url, options).then( resp => {
-			let json = resp.json();
-			if(resp.ok) {
-				return json;
-			}
-			return json.then(err => {throw err});
-		}).then( json => json );
-	}
-	static xhrFile(url, data, size, verb,) {
-		let options = Object.assign({ method: verb }, { body: data }, { processData: false }, { async: false });
-		options.headers = Api.fileHeaders(size);
-		options.credentials = 'same-origin';
+        return fetch(url, options).then( resp => {
+            let json = resp.json();
+            if(resp.ok) {
+                return json;
+            }
+            return json.then(err => {throw err});
+        }).then( json => json );
+    }
+    static xhrFile(url, data, size, verb,) {
+        let options = Object.assign({ method: verb }, { body: data }, { processData: false }, { async: false });
+        options.headers = Api.fileHeaders(size);
+        options.credentials = 'same-origin';
 
-		return fetch(url, options).then(resp => {
-			let json = resp.json();
-			if (resp.ok) {
-				return json;
-			}
-			return json.then(err => { throw err });
-		}).then(json => json);
-	}
+        return fetch(url, options).then(resp => {
+            let json = resp.json();
+            if (resp.ok) {
+                return json;
+            }
+            return json.then(err => { throw err });
+        }).then(json => json);
+    }
 }

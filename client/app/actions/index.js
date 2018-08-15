@@ -5,5 +5,5 @@ import * as CommonActions from './common';
  * @type {*}
  */
 export const ActionCreators = Object.assign({},
-	CommonActions
+    CommonActions
 );

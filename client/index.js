@@ -21,8 +21,8 @@ const middlewares = [thunkMiddleware];
  * Only apply logger middleware if not in production
  */
 if(process.env.NODE_ENV !== 'production') {
-	const loggerMiddleware = createLogger();
-	middlewares.push(loggerMiddleware);
+    const loggerMiddleware = createLogger();
+    middlewares.push(loggerMiddleware);
 }
 
 /**
@@ -31,9 +31,9 @@ if(process.env.NODE_ENV !== 'production') {
  * @returns {*}
  */
 function configureStore(initialState) {
-	const enhancer = compose( applyMiddleware( ...middlewares ) );
+    const enhancer = compose( applyMiddleware( ...middlewares ) );
 
-	return createStore(reducer, initialState, enhancer);
+    return createStore(reducer, initialState, enhancer);
 }
 const store = configureStore({});
 
@@ -42,18 +42,18 @@ const store = configureStore({});
  * Sets up the Redux store and calls the Application component
  */
 class App extends React.Component {
-	render() {
-		return (
-			<Provider store={store}>
-				<Application/>
-			</Provider>
-		)
-	}
+    render() {
+        return (
+            <Provider store={store}>
+                <Application/>
+            </Provider>
+        )
+    }
 }
 
 /**
  * Wait for SharePoint functions to load before rendering the application
  */
 SP.SOD.executeFunc( 'sp.js', 'SP.ClientContext', function() {
-	render(<App/>, document.getElementById('app'));
+    render(<App/>, document.getElementById('app'));
 });

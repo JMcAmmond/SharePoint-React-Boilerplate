@@ -6,9 +6,9 @@ import { Home, Example, About } from './components';
 import './app.scss';
 
 export default class Application extends React.Component {
-	constructor(props) {
+    constructor(props) {
         super(props);
-	}
+    }
 
     render() {
         return (
