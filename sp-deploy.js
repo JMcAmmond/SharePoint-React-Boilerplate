@@ -9,7 +9,7 @@ let fs = require('fs');
 let path = require('path');
 
 /**
- * Upload bundle.js to SharePoint
+ * Upload files to SharePoint
  */
 (function() {
     const folder = '';          // SiteAssets/Scripts/CodeSplitting
