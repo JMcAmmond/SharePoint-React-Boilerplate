@@ -12,7 +12,7 @@ let path = require('path');
  * Upload bundle.js to SharePoint
  */
 (function() {
-    const folder = "";          // SiteAssets/Scripts/CodeSplitting
+    const folder = '';          // SiteAssets/Scripts/CodeSplitting
     const coreOptions = {
         siteUrl: ''             // https://tenant.sharepoint.com/sites/site
     }

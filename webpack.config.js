@@ -14,6 +14,8 @@ module.exports = (env, argv) => {
     let pathsToClean = [
         './public',
     ]
+    let publicPath = '../SiteAssets/Scripts/Test/'
+
     // the clean options to use
     let cleanOptions = {
         exclude: ['config.js'],
@@ -26,7 +28,7 @@ module.exports = (env, argv) => {
         output: {
             path: BUILD_DIR,
             filename: 'bundle.js',
-            publicPath: './public/'
+            publicPath: publicPath
         },
         optimization: {
             namedChunks: true,

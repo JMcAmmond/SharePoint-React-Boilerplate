@@ -1,4 +1,4 @@
-const APP_CONFIG = {
+var APP_CONFIG = {
 	site: {
 		url: "<Site Path>",
 	}
