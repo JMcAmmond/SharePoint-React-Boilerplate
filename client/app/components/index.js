@@ -6,7 +6,7 @@ function Loading() {
 }
 
 export const Application = Loadable({
-    loader: () => import(/* webpackChunkName: "Application" */ '../app'),
+    loader: () => import(/* webpackChunkName: "Application" */ './common/application'),
     loading() {
         return <span></span>
     }
