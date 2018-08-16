@@ -8,7 +8,13 @@ export default class About extends React.Component {
     render() {
         return (
             <div className="About">
-                The About component
+                <p>The About component</p>
+
+                {this.props.match.params.id !== undefined && (
+                    <div>
+                        id: {this.props.match.params.id}
+                    </div>
+                )}
             </div>
         )
     }

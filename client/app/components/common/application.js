@@ -19,12 +19,14 @@ export default class Application extends React.Component {
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/example">Example</Link></li>
                             <li><Link to="/about">About</Link></li>
+                            <li><Link to="/about/4">About with id</Link></li>
                         </ul>
                     </nav>
 
                     <Route exact path="/" component={Home} />
                     <Route path="/example" component={Example} />
-                    <Route path="/about" component={About} />
+                    <Route exact path="/about" component={About} />
+                    <Route path="/about/:id" component={About} />
                 </div>
             </HashRouter>
         )

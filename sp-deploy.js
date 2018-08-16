@@ -17,7 +17,7 @@ let path = require('path');
         siteUrl: ''             // https://tenant.sharepoint.com/sites/site
     }
     const creds = {
-        username: '',           // username@axample.com
+        username: '',           // username@example.com
         password: ''            // Password12345
     }
     let projectFiles = [];
