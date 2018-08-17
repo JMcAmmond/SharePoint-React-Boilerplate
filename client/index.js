@@ -16,14 +16,14 @@ import reducer from './app/reducers/index';
 import Loadable from 'react-loadable';
 import { Application } from './app/components';
 
-const middlewares = [thunkMiddleware];
+const middleware = [thunkMiddleware];
 
 /**
  * Only apply logger middleware if not in production
  */
 if(process.env.NODE_ENV !== 'production') {
     const loggerMiddleware = createLogger();
-    middlewares.push(loggerMiddleware);
+    middleware.push(loggerMiddleware);
 }
 
 /**
@@ -32,7 +32,7 @@ if(process.env.NODE_ENV !== 'production') {
  * @returns {*}
  */
 function configureStore(initialState) {
-    const enhancer = compose( applyMiddleware( ...middlewares ) );
+    const enhancer = compose( applyMiddleware( ...middleware ) );
 
     return createStore(reducer, initialState, enhancer);
 }
