@@ -11,7 +11,11 @@ let path = require('path');
  * Upload files to SharePoint
  */
 (function() {
-    const projectFiles = './public/**.*'
+    const projectFiles = [
+        './index.html',
+        './client/config.js',
+        './public/**.*'
+    ];
     const spFolder = '';        // SiteAssets/Scripts/Test
     const coreOptions = {
         siteUrl: ''             // https://tenant.sharepoint.com/sites/site
