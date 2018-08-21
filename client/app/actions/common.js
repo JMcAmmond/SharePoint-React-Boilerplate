@@ -1,7 +1,5 @@
 import Api from '../lib/api';
 import * as types from './types';
-import cloneDeep from 'lodash/cloneDeep';
-import find from 'lodash/find';
 
 /**
  * Common function to attach a file to a list item

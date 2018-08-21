@@ -13,7 +13,6 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import reducer from './app/reducers/index';
-import Loadable from 'react-loadable';
 import { Application } from './app/components';
 
 const middleware = [thunkMiddleware];
