@@ -1,9 +1,7 @@
 # SharePoint React Boilerplate
-
-
-## Getting Started
 This application is written using ReactJS and compiled using WebpackJS
 
+## Getting Started
 
 #### Prerequisites
 You will be required to install the latest version of [NodeJS](https://nodejs.org/en/) as the project will rely heavily on NPM (Node Package Manager). Once installed check to see if NPM installed correctly by opening up a terminal or command prompt and trying `> npm --version`
