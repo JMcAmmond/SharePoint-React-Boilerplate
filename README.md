@@ -18,25 +18,25 @@ In order to compile and deploy your React project you will need to download some
 There are some files that you will need to update before so start compiling your code with webpack.
 
 #### sp-deploy.js  
-- spFolder
+- *spFolder*
   - This is the path where you would like to upload files on SharePoint. (Ex. SiteAssets/Scripts/Test)
 
-- username/password
+- *username/password*
   - These are you SharePoint sign on credentials. (Ex. my_name@mycompany.com, SuperSecretPassword123)
 
 #### sp-config.dev.js / sp-config.prod.js
-- siteUrl
+- *siteUrl*
   - This is the site SharePoint site url. (Ex. https://tenant.sharepoint.com/sites/Test)
 
-- projectFiles
+- *projectFiles*
   - These are the files that will be uploaded to your SharePoint site.
 
 #### webpack.config.js
-- publicPath
+- *publicPath*
   - Update this variable with the relative path to your project file located on SharePoint. This should be the same folder destination as `spFolder` located in sp-deploy.js (Ex. ../SiteAssets/Scripts/Test/)
 
 #### index.html
-- script links
+- *script links*
   - Both script links will need to link to your project files. Only bundle.js and config.js are required to get your application to load.
 
 
