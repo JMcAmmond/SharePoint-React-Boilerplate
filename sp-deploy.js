@@ -4,36 +4,33 @@
 *    
 *****************************************************/
 
+let minimist = require('minimist');
 let spsave = require("spsave").spsave;
 let path = require('path');
+let env = minimist(process.argv.slice(2)).env || null;
+let spConfig = env === 'dist' 
+    ? require('./sp-config.prod.js') 
+    : require('./sp-config.dev.js');
 
 /**
  * Upload files to SharePoint
  */
-(function() {
-    const projectFiles = [
-        './index.html',
-        './client/config.js',
-        './public/**.*'
-    ];
+(function () {
     const spFolder = '';        // SiteAssets/Scripts/Test
-    const coreOptions = {
-        siteUrl: ''             // https://tenant.sharepoint.com/sites/site
-    }
     const creds = {
         username: '',           // username@example.com
         password: ''            // Password12345
-    }
+    };
 
-    if (coreOptions.siteUrl === '' || creds.username === '' || creds.password === '' || spFolder === '') {
+    if (spConfig.coreOptions.siteUrl === '' || creds.username === '' || creds.password === '' || spFolder === '') {
         console.log(' ');
         console.warn('\x1b[33m%s\x1b[0m', 'File not uploaded. Missing information');
         console.log(' ');
         return;
     }
 
-    spsave(coreOptions, creds, {
-        glob: projectFiles, 
+    spsave(spConfig.coreOptions, creds, {
+        glob: spConfig.projectFiles,
         folder: spFolder
     })
     .then(function () {

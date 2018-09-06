@@ -72,7 +72,7 @@ module.exports = (env, argv) => {
             new WebpackShellPlugin({
                 dev: false,
                 onBuildStart: !devMode ? ['npm test'] : [],
-                onBuildEnd: ['node sp-deploy.js']
+                onBuildEnd: [`node sp-deploy.js --env ${env}`]
             }),
             new MiniCssExtractPlugin({
                 filename: "bundle.css",
