@@ -2,5 +2,5 @@
  * Define action types
  */
 
-//Common
+//Example Action Type
 export const SAVING = 'SAVING';

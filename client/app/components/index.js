@@ -6,23 +6,8 @@ function Loading() {
 }
 
 export const Application = Loadable({
-    loader: () => import(/* webpackChunkName: "Application" */ './common/application'),
+    loader: () => import(/* webpackChunkName: "Application" */ './example/application'),
     loading() {
         return <span></span>
     }
-});
-
-export const Home = Loadable({
-    loader: () => import(/* webpackChunkName: "Home" */ './common/home'),
-    loading: Loading
-});
-
-export const Example = Loadable({
-    loader: () => import(/* webpackChunkName: "Example" */ './common/example'),
-    loading: Loading
-});
-
-export const About = Loadable({
-    loader: () => import(/* webpackChunkName: "About" */ './common/about'),
-    loading: Loading
 });

@@ -5,7 +5,7 @@ const spConfig = {
         './public/**.*'
     ],
     coreOptions: {
-        siteUrl: ''    // https://tenant.sharepoint.com/sites/site
+        siteUrl: ''    // https://{Your Tenant}.sharepoint.com/sites/{Your Prod Site}
     }
 }
 

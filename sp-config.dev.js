@@ -4,9 +4,8 @@ const spConfig = {
         './client/config.js',
         './public/**.*'
     ],
-    spFolder: '',      // SiteAssets/Scripts/Test
     coreOptions: {
-        siteUrl: ''    // https://tenant.sharepoint.com/sites/site
+        siteUrl: ''    // https://{Your Tenant}.sharepoint.com/sites/{Your Dev Site}
     }
 }
 

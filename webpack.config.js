@@ -14,7 +14,7 @@ module.exports = (env, argv) => {
     let pathsToClean = [
         './public',
     ]
-    let publicPath = '../SiteAssets/Scripts/Test/'
+    let publicPath = '../SiteAssets/Scripts/{Your Project Dir}/'
 
     // the clean options to use
     let cleanOptions = {
