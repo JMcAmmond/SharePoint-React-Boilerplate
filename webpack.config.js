@@ -71,6 +71,7 @@ module.exports = (env, argv) => {
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             new WebpackShellPlugin({
                 dev: false,
+                onBuildStart: !devMode ? ['npm test'] : [],
                 onBuildEnd: [`node sp-deploy.js --env ${env}`]
             }),
             new MiniCssExtractPlugin({
