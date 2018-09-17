@@ -93,9 +93,17 @@ export default class PeoplePicker extends React.Component {
                 onChange={this.onChange.bind(this)}
                 loadOptions={this.getUsers}
                 value={this.filterValues(this.props.value)}
-                placeholder={this.props.placeholder ? this.props.placeholder : 'Please select a value'}
+                placeholder={this.props.placeholder}
                 disabled={this.props.disabled}
             />
         )
     }
+}
+
+PeoplePicker.defaultProps = {
+    multi: false,
+    value: [],
+    placeholder: 'Please select a user',
+    disabled: false,
+    creatable: false,
 }

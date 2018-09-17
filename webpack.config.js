@@ -14,7 +14,7 @@ module.exports = (env, argv) => {
     let pathsToClean = [
         './public',
     ]
-    let publicPath = '../SiteAssets/Scripts/{Your Project Dir}/'
+    let publicPath = '../SiteAssets/Scripts/{Project Dir}/'
 
     // the clean options to use
     let cleanOptions = {
@@ -71,7 +71,6 @@ module.exports = (env, argv) => {
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
             new WebpackShellPlugin({
                 dev: false,
-                onBuildStart: !devMode ? ['npm test'] : [],
                 onBuildEnd: [`node sp-deploy.js --env ${env}`]
             }),
             new MiniCssExtractPlugin({

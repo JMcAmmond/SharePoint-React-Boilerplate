@@ -2,5 +2,6 @@
  * Define action types
  */
 
-//Example Action Type
-export const SAVING = 'SAVING';
+//Redux Counter
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';

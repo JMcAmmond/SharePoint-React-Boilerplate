@@ -1,6 +1,28 @@
 # SharePoint React Boilerplate
 This application is written using ReactJS and compiled using WebpackJS
 
+- [Getting Started](#getting-started)
+	- [Prerequisites](#prerequisites)
+	- [Installing Node Modules](#installing-node-modules)
+- [WebPack configuration](#webpack-configuration)
+	- [sp-deploy.js](#sp-deployjs)
+	- [sp-config.dev.js / sp-config.prod.js](#sp-configdevjs-sp-configprodjs)
+	- [webpack.config.js](#webpackconfigjs)
+	- [index.html](#indexhtml)
+- [Compiling Your Code](#compiling-your-code)
+	- [Development](#development)
+	- [Build](#build)
+	- [Deployment](#deployment)
+- [NPM Commands](#npm-commands)
+- [Useful Resources](#useful-resources)
+- [Functional Components](#functional-components)
+	- [People Picker](#people-picker)
+	- [Image Upload](#image-upload)
+	- [Iframe](#iframe)
+- [Styled Components](#styled-components)
+	- [Styled Container](#styled-container)
+	- [Styled Row](#styled-row)
+
 ## Getting Started
 
 #### Prerequisites
@@ -83,3 +105,251 @@ Used when you are ready to go into production
  - [NodeJS](https://nodejs.org/en/)
  - [webpack](https://webpack.github.io/)
  - [SCSS](https://sass-lang.com/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Functional Components
+Listed below are all the functional components available in this boilerplate. Each component should have a short description of what it does, all the props available for this component, and an example of how to use it.
+
+### People Picker
+The people picker component is an text input field that sends a REST call to SharePoint querying people in the company. The people picker can be either a single user input or multiple user input. You can also allow for the creation or a user if none are found.
+
+##### Props
+| Prop Name   | Type     | Default                | Description                                                                             |
+|-------------|----------|------------------------|-----------------------------------------------------------------------------------------|
+| onChange    | Function | -                      | When there is a new user selected the on change event will return all users in an array |
+| multi       | Boolean  | false                  | Allows for multiple users to be selected                                                |
+| value       | Array    | []                     | An array of user objects                                                                |
+| placeholder | String   | 'Please select a user' | Placeholder value when no users have been selected                                      |
+| disabled    | Boolean  | false                  | Locks the input from any further interaction                                            |
+| creatable   | Boolean  | false                  | Allows you to create people that are not found                                          |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import PeoplePicker from '../common/people-picker';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            people: []
+        }
+    }
+
+    handleOnChange(value) {
+        this.setState({
+            people: value
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <PeoplePicker
+                    onChange={this.handleOnChange.bind(this)}
+                    disabled={false}
+                    placeholder="Please select multiple users"
+                    multi={true}
+                    value={this.state.people}
+                />
+            </div>
+        )
+    }
+}
+
+```
+
+
+
+### Image Upload
+This ImageUpload component is a simple drop target that allows for images under 800kb in size. When an image is dropped or selected from the drop target then the component will return the whole image blob to the parent. Supplying an image property will allow the user to see a preview of the image that they have selected.
+
+##### Props
+| Prop Name      | Type     | Default     | Description                                                                                           |
+|----------------|----------|-------------|-------------------------------------------------------------------------------------------------------|
+| onImageChange  | Function | -           | When an image under 800kb is drop/selected the event with the new image will be returned              |
+| image          | URL      | -           | This is the url/data uri of an image. Usually its the image being uploaded but you can send anything. |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import ImageUpload from '../common/image-upload';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            image: null
+        }
+    }
+
+    /**
+     * Store the image data when a new file is drop or selected
+     * @param event
+     */
+    onImageChange(event) {
+        let self = this;
+        let eventTarget = event.target;
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+                reader.onloadend = function(e) {
+                    self.setState({
+                        image: e.target.result
+                    });
+                };
+                reader.readAsDataURL(eventTarget.files[0]);
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <ImageUpload
+                    onImageChange={this.onImageChange.bind(this)}
+                    image={this.state.image}
+                />
+            </div>
+        )
+    }
+}
+```
+
+
+### Iframe
+Generates an iframe with a specific url.
+
+##### Props
+| Prop Name      | Type     | Default     								   | Description                     |
+|----------------|----------|----------------------------------------------|---------------------------------|
+| url            | Url      | '../Shared Documents/Forms/AllItems.aspx'    | The iframe location             |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import Iframe from '../common/iframe';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <Iframe
+                    url="https://tenant.sharepoint.com/sites/SomeSite"
+                />
+            </div>
+        )
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+## Styled Components
+Listed below are all the styled components available in this boilerplate. Each component should have a short description of what it does, all the props available for this component, and an example of how to use it.
+
+### Styled Container
+The Styled Container come with a bunch of preset CSS styles that should help make your application look better without having to write very much CSS yourself. Styled Container is often used in conjunction with Styled Row, however this is not necessary.
+
+##### Props
+| Prop Name   | Type     | Default                     | Description                                                                             |
+|-------------|----------|-----------------------------|-----------------------------------------------------------------------------------------|
+| title       | String   | -                           | A title that will show at the top of your container                                     |
+| description | String   | -                           | A description that will show just under your title                                      |
+| className   | String   | -                           | A custom classname so that you can attach your own styles                               |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import StyledContainer from '../common/styled-container';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <StyledContainer>
+                    <p>This is a child of StyledContainer</p>
+                </StyledContainer>
+            </div>
+        )
+    }
+}
+
+```
+
+
+### Styled Row
+To receive the proper effects of the Styled Row it must be used within a Styled Container. Using it on its own will only result in your application receiving useless markup.
+
+##### Props
+| Prop Name   | Type     | Default                | Description                                                                             |
+|-------------|----------|------------------------|-----------------------------------------------------------------------------------------|
+| rowType     | String   | 'even-spaced'          | When there is a new user selected the on change event will return all users in an array |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import StyledContainer from '../common/styled-container';
+import StyledRow from '../common/styled-row';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <StyledContainer>
+                    {/* Even spaced columns */}
+                    <StyledRow rowType="even-spaced">
+                        <div>
+                             <span>Column 1</span>
+                        </div>
+
+                        <div>
+                             <span>Column 2</span>
+                        </div>
+                    </StyledRow>
+
+                    {/* Seven to one column ratio */}
+                    <StyledRow rowType="seven-one">
+                        <div>
+                             <input type="text"/>
+                        </div>
+
+                        <div>
+                             <button>Save</button>
+                        </div>
+                    </StyledRow>
+                </StyledContainer>
+            </div>
+        )
+    }
+}
+
+```

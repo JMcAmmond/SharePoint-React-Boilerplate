@@ -16,7 +16,7 @@ let spConfig = env === 'dist'
  * Upload files to SharePoint
  */
 (function () {
-    const spFolder = '';        // SiteAssets/Scripts/{Your Project Dir}
+    const spFolder = 'SiteAssets/Scripts/{Project Dir}';        // SiteAssets/Scripts/Test
     const creds = {
         username: '',           // username@example.com
         password: ''            // Password12345

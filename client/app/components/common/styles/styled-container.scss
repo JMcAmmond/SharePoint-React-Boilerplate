@@ -1,0 +1,390 @@
+.StyledContainer {
+    box-shadow: 0 2px 4px 0 rgba(50, 50, 93, 0.1);
+    border-top: 4px solid #85d3f2;
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 2.5rem;
+    position: relative;
+
+    .section-title {
+        padding: 10px 10px 0;
+        flex: 1;
+
+        > span.title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .message {
+            font-weight: 500;
+            
+            &.success {
+                color: #00bb89;
+            }
+            &.error {
+                color: #e64200;
+            }
+        }
+    }
+
+    .section-body {
+        padding: 10px 10px 0;
+        flex: 3;
+        position: relative;
+
+        label {
+            display: block;
+            font-weight: 400;
+            margin-bottom: 3px;
+            font-size: 0.75rem;
+            line-height: 18px;
+
+            &.required:after {
+                content: '*';
+                color: red;
+            }
+        }
+        label + span, .input-placeholder {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            line-height: 19px;
+            border: 1px solid rgb(214, 214, 214);
+            border-radius: 3px;
+            background-color: #eeeeee;
+            white-space: nowrap;
+            min-height: 39px;
+            color: #666666;
+        }
+
+        .row {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: row;
+
+            > div.flex-end {
+                align-self: flex-end;
+            }
+
+            &.even-spaced {
+                > div {
+                    flex-grow: 1;
+                    flex-basis: 0;
+                    margin: 0 5px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.seven-one {
+                > div {
+                    margin: 0 5px;
+
+                    &:first-child {
+                        flex-grow: 7;
+                        flex-basis: 0;
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        margin-right: 0;
+                        text-align: right;
+                    }
+                }
+            }
+            &.one-five {
+                > div {
+                    margin: 0 5px;
+
+                    &:first-child {
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        flex-grow: 5;
+                        flex-basis: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.five-one {
+                > div {
+                    margin: 0 5px;
+
+                    &:first-child {
+                        flex-grow: 5;
+                        flex-basis: 0;
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        margin-right: 0;
+                    }
+                }
+            }
+            &.one-third {
+                > div {
+                    width: 33%;
+                }
+            }
+        }
+    }
+
+    /****************************************
+                Form Elements
+    ****************************************/
+    .radiogroup {
+        border: none;
+        padding: 0;
+
+        ul.radio {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: flex;
+
+            li {
+                position: relative;
+
+                input {
+                    width: auto;
+                    padding: 0;
+                    line-height: 0;
+                    border: none;
+                    background-color: transparent;
+                    margin: 0 5px 0 5px;
+                }
+                label {
+                    display: inline-block;
+                    margin-bottom: 0;
+                    line-height: 0;
+                    margin-right: 1.5rem;
+                }
+
+                input[type="radio"]:disabled + label {
+                    opacity: 0.6;
+                }
+                input[type="radio"]:checked:disabled:after {
+                    background-color: #cccccc;
+                }
+                input[type="radio"]:checked:after {
+                    content: ' ';
+                    width: 5px;
+                    height: 5px;
+                    background-color: #00a4e4;
+                    position: absolute;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0,0,0,0.1);
+                    top: 8px;
+                    left: 7px;
+                }
+                input[type="radio"]:disabled:before {
+                    background-color: #f9f9f9;
+                }
+
+                input[type="radio"]:before {
+                    content: ' ';
+                    width: 15px;
+                    height: 15px;
+                    background-color: #fff;
+                    position: absolute;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0,0,0,0.2);
+                    top: 3px;
+                    left: 2px;
+                }
+            }
+        }
+    }
+    *:not(.Select-input) > input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        line-height: 19px;
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 3px;
+        background-color: #f9fcfd;
+
+        &:disabled {
+            border: 1px solid #d6d6d6;
+            background-color: #eeeeee;
+            color: #666666;
+        }
+    }
+    textarea {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100% !important;
+        height: 130px;
+        background-color: #f9fcfd;
+    }
+    button:not(.react-datepicker__navigation) {
+        margin-left: 0;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 7px 10px;
+        font-weight: 700;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        cursor: pointer;
+        border-radius: 3px;
+
+        &.save {
+            margin-right: 10px;
+        }
+        &.submit {
+            background-color: rgb(0, 164, 228);
+            color: rgb(255, 255, 255);
+        }
+        &.save-file {
+            padding: 14px 10px;
+        }
+
+        .fa, .far {
+            margin-right: 7px;
+            font-size: 14px;
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            
+            &:hover + .tool-tip {
+                display: block;
+            }
+        }
+    }
+    table {
+        width: 100%;
+        font-size: 11px;
+        box-shadow: 0 2px 4px 0 rgba(50,50,93,.1);
+        border-left: 1px solid rgba(0,0,0,.05);
+        border-right: 1px solid rgba(0,0,0,.05);
+        border-bottom: 1px solid rgba(0,0,0,.05);
+
+        thead {
+            tr {
+                th {
+                    color: #fff;
+                    background-color: #6198b6;
+                    padding: 5px 0;
+                    font-size: 12px;
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background-color: rgb(228, 243, 255);
+                }
+                td {
+                    padding: 3px 1px;
+
+                    input, select {
+                        height: 25px;
+                        padding: 0 5px !important;
+                    }
+                    input[type="number"] {
+                        text-align: right;
+                    }
+                    label {
+                        font-size: inherit;
+                    }
+                    .right-align {
+                        text-align: right;
+                        display: block;
+                    }
+                    .center-align {
+                        text-align: center;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    
+    /****************************************
+                React Date Picker
+    ****************************************/
+    .date-container {
+        .fa, .far {
+            position: absolute;
+            z-index: 1;
+            font-size: 18px;
+            padding: 11px 9px;
+            color: #00a4e4;
+        }
+
+        input {
+            padding-left: 35px;
+        }
+    }
+
+    .react-datepicker-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    .react-datepicker__input-container {
+        width: 100%;
+    }
+    .react-datepicker-wrapper button, .react-datepicker-wrapper input[type=button], 
+    .react-datepicker-wrapper input[type=reset], .react-datepicker-wrapper input[type=submit], 
+    .react-datepicker button, .react-datepicker input[type=button], .react-datepicker input[type=reset], 
+    .react-datepicker input[type=submit] {
+        background-color: none!important;
+        margin-left: 0!important;
+        min-width: 0!important;
+        padding: 0!important;
+    }
+
+    /****************************************
+                React Select
+    ****************************************/
+    .Select-control {
+        background-color: #f9fcfd;
+    }
+    .Select-input {
+        height: 39px;
+        
+        > input {
+            padding: 12px 0;
+        }
+    }
+    .Select-placeholder, .Select--single > .Select-control .Select-value {
+        line-height: 39px;
+    }
+    .Select--multi .Select-value {
+        margin-top: 9px;
+    }
+}
+
+/****************************************
+        SharePoint page overrides
+****************************************/
+body {
+    background-color: #fbfcff;
+}
+.ms-core-overlay {
+    background-color: transparent;
+}
+#s4-bodyContainer {
+    background-color: #fbfcff;
+}
+.ms-webpartPage-root {
+    border-spacing: 5px 0 !important;
+}
+#DeltaPlaceHolderMain > div:nth-child(2) {
+    display: table;
+    border-spacing: 5px 0;
+    width: 100%;
+}
