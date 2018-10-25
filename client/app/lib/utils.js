@@ -217,25 +217,25 @@ export function buildSharePointQuery(schema) {
         switch(schema[key].type) {
             case("User"):
             case("UserMulti"):
-                select += `${key}/ID, ${key}/EMail, ${key}/Title, `;
-                expand += `${key}, `;
+                select += `${key}/ID, ${key}/EMail, ${key}/Title,`;
+                expand += `${key},`;
                 break;
             case("Attachments"):
-                select += `Attachments, AttachmentFiles, `;
-                expand += `AttachmentFiles, `;
+                select += `Attachments, AttachmentFiles,`;
+                expand += `AttachmentFiles,`;
                 break;
             default:
-                select += `${key}, `;
+                select += `${key},`;
         }
     });
 
     return `
         ${select !== "" 
-            ? ('$select=' + select.slice(0, -2)) 
+            ? ('$select=' + select.slice(0, -1)) 
             : ''
         }
         ${select !== "" && expand !== "" 
-            ? ('&$expand=' + expand.slice(0, -2)) 
+            ? ('&$expand=' + expand.slice(0, -1)) 
             : ''
         }
     `.replace(/\s/g, "");
