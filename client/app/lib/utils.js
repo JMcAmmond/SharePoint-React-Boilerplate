@@ -214,21 +214,27 @@ export function buildSharePointQuery(schema) {
     let expand = "";
 
     Object.keys(schema).forEach((key) => {
-        if(schema[key].type === "User" || schema[key].type === "UserMulti") {
-            select += `${select !== "" ? ', ' : ''}${key}/ID, ${key}/EMail, ${key}/Title`;
-            expand += `${expand !== "" ? ', ' : ''}${key}`;
+        switch(schema[key].type) {
+            case("User"):
+            case("UserMulti"):
+                select += `${key}/ID, ${key}/EMail, ${key}/Title, `;
+                expand += `${key}, `;
+                break;
+            case("Lookup"):
+                select += `${key}/ID, ${key}/AnnualSpendTotal, ${key}/AFETypeText, `;
+                expand += `${key}, `;
+                break;
+            case("Attachments"):
+                select += `Attachments, AttachmentFiles, `;
+                expand += `AttachmentFiles, `;
+                break;
+            default:
+                select += `${key}, `;
         }
-        else if(schema[key].type === "Attachments") {
-            select += `${select !== "" ? ', ' : ''}Attachments, AttachmentFiles`;
-            expand += `${expand !== "" ? ', ' : ''}AttachmentFiles`;
-        }
-        else {
-            select += `${select !== "" ? ', ' : ''}${key}`;
-        } 
     });
 
     return `
-        ${select !== "" ? ('$select=' + select) : ''}
-        ${select !== "" && expand !== "" ? ('&$expand=' + expand) : ''}
+        ${ select !== "" ? ('$select=' + select.slice(0, -2)) : '' }
+        ${ select !== "" && expand !== "" ? ('&$expand=' + expand.slice(0, -2)) : '' }
     `;
 }
