@@ -1,0 +1,51 @@
+.Comments {
+    margin-bottom: 15px;
+
+    .new-comment-container {
+        .new-comment-button {
+            text-align: right;
+            position: absolute;
+            top: -25px;
+            right: 11px;
+
+            .fa, .far {
+                font-size: 10px !important;
+            }
+        }
+        .new-comment {
+            margin-bottom: 15px;
+        }
+    }
+
+    .comment-container {
+        > div  {
+            margin-bottom: 10px;
+        }
+        
+        .comment {
+            padding: 10px;
+            background-color: rgb(249, 252, 253);
+            margin-bottom: 10px;
+            border: 1px solid rgb(237, 241, 243);
+            border-radius: 3px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            .user {
+                display: block;
+                color: #00a4e4;
+                font-size: 16px;
+            }
+            .timestamp {
+                display: block;
+                color: #888888;
+                font-size: 11px;
+                margin-bottom: 10px;
+            }
+            .body {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

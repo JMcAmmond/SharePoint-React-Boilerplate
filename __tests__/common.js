@@ -1,4 +1,4 @@
-import { getItemTypeForListName } from '../client/app/actions/common';
+import { getItemTypeForListName } from '../client/lib/utils';
 
 test('Correct ItemType', () => {
     //No spaces

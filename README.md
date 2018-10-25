@@ -126,14 +126,15 @@ Listed below are all the functional components available in this boilerplate. Ea
 The people picker component is an text input field that sends a REST call to SharePoint querying people in the company. The people picker can be either a single user input or multiple user input. You can also allow for the creation or a user if none are found.
 
 ##### Props
-| Prop Name   | Type     | Default                | Description                                                                             |
-|-------------|----------|------------------------|-----------------------------------------------------------------------------------------|
-| onChange    | Function | -                      | When there is a new user selected the on change event will return all users in an array |
-| multi       | Boolean  | false                  | Allows for multiple users to be selected                                                |
-| value       | Array    | []                     | An array of user objects                                                                |
-| placeholder | String   | 'Please select a user' | Placeholder value when no users have been selected                                      |
-| disabled    | Boolean  | false                  | Locks the input from any further interaction                                            |
-| creatable   | Boolean  | false                  | Allows you to create people that are not found                                          |
+| Prop Name     | Type     | Default                | Description                                                                             |
+|---------------|----------|------------------------|-----------------------------------------------------------------------------------------|
+| onChange      | Function | -                      | When there is a new user selected the on change event will return all users in an array |
+| multi         | Boolean  | false                  | Allows for multiple users to be selected                                                |
+| value         | Array    | []                     | An array of user objects                                                                |
+| placeholder   | String   | 'Please select a user' | Placeholder value when no users have been selected                                      |
+| disabled      | Boolean  | false                  | Locks the input from any further interaction                                            |
+| creatable     | Boolean  | false                  | Allows you to create people that are not found                                          |
+| excludedUsers | Array    | []                     | Array of emails you would like to exclude from search                                   |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
@@ -257,9 +258,93 @@ export default class MyComponent extends React.Component {
 }
 ```
 
+### Modal
+Creates a modal that sits on top of your page.
 
+##### Props
+| Prop Name      | Type     | Default                                      | Description                                       |
+|----------------|----------|----------------------------------------------|---------------------------------------------------|
+| closeModal     | Function |                                              | Function to call when the close button is clicked |
+| closeLabel     | String   | '×'                                          | Close button label                                |
+| className      | String   | ''                                           | Optional class names                              |
 
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import Modal from '../common/modal';
 
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showModal: false
+        }
+    }
+
+    handleCloseModal() {
+        this.setState({
+            showModal: false
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.showModal && (
+                    <Modal closeModal={this.handleCloseModal.bind(this)}>
+                        <h1>This is my modal</h1>
+                    </Modal>
+                )}
+            </div>
+        )
+    }
+}
+```
+
+### Comments
+Creates a textarea where comments can be added and a section where previous comments are displayed.
+
+##### Props
+| Prop Name          | Type     | Default                                      | Description                                       |
+|--------------------|----------|----------------------------------------------|---------------------------------------------------|
+| comments           | String   | ''                                           | String of comments                                |
+| commentLabel       | String   | 'Comments'                                   | Comment section label                             |
+| onAddComment       | Function |                                              | Returns the markup for a new comment              |
+| disabled           | Boolean  | false                                        | Is the add comment button disabled                |
+| newCommentsVisible | Function | true                                         | Should the new comments section be visible        |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import Comments from '../common/comments';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            comments: ""
+        }
+    }
+
+    onCommentAdd(markup) {
+        let comments = this.state.comments;
+        this.setState({
+            comments: comment + markup
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <Comments
+                    comments={this.state.comments}
+                    onCommentAdd={this.onCommentAdd.bind(this)}
+                />
+            </div>
+        )
+    }
+}
+```
 
 
 

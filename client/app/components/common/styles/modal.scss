@@ -1,0 +1,44 @@
+.Modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100vw;
+	height: 100vh;
+
+	.Modal--background {
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(103, 123, 140, 0.63);
+	}
+	.Modal--content {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    padding: 30px;
+	    background-color: white;
+	    min-width: 500px;
+	    min-height: 150px;    
+	    margin: auto;
+	    -moz-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+	    -webkit-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+	    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+
+		.Modal--close {
+		    position: absolute;
+		    top: 6px;
+		    right: 8px;
+		    font-size: 1.5rem;
+		    line-height: 12px;
+		    cursor: pointer;
+		    width: 15px;
+		    height: 15px;
+		    color: rgba(0,0,0,0.3);
+
+		    &:hover {
+		    	color: rgba(0,0,0,0.8);
+		    }
+		}
+	}
+}

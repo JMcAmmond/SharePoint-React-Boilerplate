@@ -1,9 +1,3 @@
-/*****************************************************
-*
-*    DO NOT UPLOAD FILE WITH USERNAME AND PASSWORD
-*    
-*****************************************************/
-
 let minimist = require('minimist');
 let spsave = require("spsave").spsave;
 let path = require('path');
@@ -18,11 +12,11 @@ let spConfig = env === 'dist'
 (function () {
     const spFolder = 'SiteAssets/Scripts/{Project Dir}';        // SiteAssets/Scripts/Test
     const creds = {
-        username: '',           // username@example.com
-        password: ''            // Password12345
+        "username": "",
+        "password": ""
     };
 
-    if (spConfig.coreOptions.siteUrl === '' || creds.username === '' || creds.password === '' || spFolder === '') {
+    if (spConfig.coreOptions.siteUrl === '' || Object.keys(creds).length === 0 || spFolder === '') {
         console.log(' ');
         console.warn('\x1b[33m%s\x1b[0m', 'File not uploaded. Missing information');
         console.log(' ');
