@@ -19,6 +19,8 @@ This application is written using ReactJS and compiled using WebpackJS
 	- [People Picker](#people-picker)
 	- [Image Upload](#image-upload)
 	- [Iframe](#iframe)
+    - [Modal](#modal)
+    - [Comments](#comments)
 - [Styled Components](#styled-components)
 	- [Styled Container](#styled-container)
 	- [Styled Row](#styled-row)
