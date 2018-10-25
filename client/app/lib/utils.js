@@ -220,10 +220,6 @@ export function buildSharePointQuery(schema) {
                 select += `${key}/ID, ${key}/EMail, ${key}/Title, `;
                 expand += `${key}, `;
                 break;
-            case("Lookup"):
-                select += `${key}/ID, ${key}/AnnualSpendTotal, ${key}/AFETypeText, `;
-                expand += `${key}, `;
-                break;
             case("Attachments"):
                 select += `Attachments, AttachmentFiles, `;
                 expand += `AttachmentFiles, `;
@@ -234,7 +230,13 @@ export function buildSharePointQuery(schema) {
     });
 
     return `
-        ${ select !== "" ? ('$select=' + select.slice(0, -2)) : '' }
-        ${ select !== "" && expand !== "" ? ('&$expand=' + expand.slice(0, -2)) : '' }
-    `;
+        ${select !== "" 
+            ? ('$select=' + select.slice(0, -2)) 
+            : ''
+        }
+        ${select !== "" && expand !== "" 
+            ? ('&$expand=' + expand.slice(0, -2)) 
+            : ''
+        }
+    `.replace(/\s/g, "");
 }
