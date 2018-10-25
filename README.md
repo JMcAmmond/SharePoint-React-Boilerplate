@@ -266,7 +266,7 @@ Creates a modal that sits on top of your page.
 ##### Props
 | Prop Name      | Type     | Default                                      | Description                                       |
 |----------------|----------|----------------------------------------------|---------------------------------------------------|
-| closeModal     | Function |                                              | Function to call when the close button is clicked |
+| closeModal     | Function | -                                            | Function to call when the close button is clicked |
 | closeLabel     | String   | '×'                                          | Close button label                                |
 | className      | String   | ''                                           | Optional class names                              |
 
@@ -311,7 +311,7 @@ Creates a textarea where comments can be added and a section where previous comm
 |--------------------|----------|----------------------------------------------|---------------------------------------------------|
 | comments           | String   | ''                                           | String of comments                                |
 | commentLabel       | String   | 'Comments'                                   | Comment section label                             |
-| onAddComment       | Function |                                              | Returns the markup for a new comment              |
+| onAddComment       | Function | -                                            | Returns the markup for a new comment              |
 | disabled           | Boolean  | false                                        | Is the add comment button disabled                |
 | newCommentsVisible | Function | true                                         | Should the new comments section be visible        |
 
