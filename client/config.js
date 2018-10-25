@@ -1,5 +1,5 @@
 var APP_CONFIG = {
 	site: {
-		url: "<Site Path>",
+		url: _spPageContextInfo.webAbsoluteUrl,
 	}
 };
