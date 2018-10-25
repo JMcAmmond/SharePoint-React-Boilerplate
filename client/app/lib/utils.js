@@ -187,3 +187,48 @@ export function hasPermissions(group) {
 		throw ex;
 	});
 }
+
+/**
+ * Build a SharePoint REST api query from the provided schema
+ * @param  {Object} schema
+ * @return {String}
+ *
+ * Schema Example
+ * ---------------
+ * 	{
+ * 	  	ID: 			{ type: "ID", key: "ID" },
+ *		Title: 			{ type: "String", key: "Title" },
+ *		Author: 		{ type: "User", key: "AuthorId" },
+ *  	Readers: 		{ type: "UserMulti", key: "ReadersId" },
+ *		Attachments: 	{ type: "Attachments", key: "Attachments"},
+ * 	}
+ *
+ * Output
+ * ---------------
+ * $select=ID, Title, Author/ID, Author/EMail, Author/Title, Readers/ID, Readers/EMail, Readers/Title, Attachments, AttachmentFiles
+ * &$expand=Author, Readers, AttachmentFiles
+ * 
+ */
+export function buildSharePointQuery(schema) {
+	let select = "";
+	let expand = "";
+
+	Object.keys(schema).forEach((key) => {
+		if(schema[key].type === "User" || schema[key].type === "UserMulti") {
+			select += `${select !== "" ? ', ' : ''}${key}/ID, ${key}/EMail, ${key}/Title`;
+			expand += `${expand !== "" ? ', ' : ''}${key}`;
+		}
+		else if(schema[key].type === "Attachments") {
+			select += `${select !== "" ? ', ' : ''}Attachments, AttachmentFiles`;
+			expand += `${expand !== "" ? ', ' : ''}AttachmentFiles`;
+		}
+		else {
+			select += `${select !== "" ? ', ' : ''}${key}`;
+		} 
+	});
+
+	return `
+		${select !== "" ? ('$select=' + select) : ''}
+		${select !== "" && expand !== "" ? ('&$expand=' + expand) : ''}
+	`;
+}
