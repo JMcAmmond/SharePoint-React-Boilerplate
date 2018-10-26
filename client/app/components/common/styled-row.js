@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/styled-row.scss';
 
 export default class StyledRow extends React.Component {
     constructor(props) {

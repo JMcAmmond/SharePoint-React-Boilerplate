@@ -1,0 +1,331 @@
+.assimilate-theme {
+    /****************************************
+                Form Elements
+    ****************************************/
+    .radiogroup {
+        border: none;
+        padding: 0;
+
+        ul.radio {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+            display: flex;
+
+            li {
+                position: relative;
+
+                input {
+                    width: auto;
+                    padding: 0;
+                    line-height: 0;
+                    border: none;
+                    background-color: transparent;
+                    margin: 0 5px 0 5px;
+                }
+                label {
+                    display: inline-block;
+                    margin-bottom: 0;
+                    line-height: 0;
+                    margin-right: 1.5rem;
+                }
+
+                input[type="radio"]:disabled + label {
+                    opacity: 0.6;
+                }
+                input[type="radio"]:checked:disabled:after {
+                    background-color: #cccccc;
+                }
+                input[type="radio"]:checked:after {
+                    content: ' ';
+                    width: 5px;
+                    height: 5px;
+                    background-color: #00a4e4;
+                    position: absolute;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0,0,0,0.1);
+                    top: 8px;
+                    left: 7px;
+                }
+                input[type="radio"]:disabled:before {
+                    background-color: #f9f9f9;
+                }
+
+                input[type="radio"]:before {
+                    content: ' ';
+                    width: 15px;
+                    height: 15px;
+                    background-color: #fff;
+                    position: absolute;
+                    border-radius: 50%;
+                    border: 1px solid rgba(0,0,0,0.2);
+                    top: 3px;
+                    left: 2px;
+                }
+            }
+        }
+    }
+    *:not(.Select-input) > input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        line-height: 19px;
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 3px;
+        background-color: #f9fcfd;
+
+        &:disabled {
+            border: 1px solid #d6d6d6;
+            background-color: #eeeeee;
+            color: #666666;
+        }
+    }
+    textarea {
+        max-width: 100%;
+        min-width: 100%;
+        width: 100% !important;
+        height: 130px;
+        background-color: #f9fcfd;
+    }
+    button:not([class^="react-datepicker_"]) {
+        margin-left: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 7px 10px;
+        font-weight: 700;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        cursor: pointer;
+        border-radius: 3px;
+
+        &.save-file {
+            padding: 14px 10px !important;
+        }
+
+        .fa, .far, .fas {
+            margin-right: 7px;
+            font-size: 14px;
+        }
+
+        &:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            
+            &:hover + .tool-tip {
+                display: block;
+            }
+        }
+    }
+    table {
+        width: 100%;
+        font-size: 11px;
+        box-shadow: 0 2px 4px 0 rgba(50,50,93,.1);
+        border-left: 1px solid rgba(0,0,0,.05);
+        border-right: 1px solid rgba(0,0,0,.05);
+        border-bottom: 1px solid rgba(0,0,0,.05);
+
+        thead {
+            tr {
+                th {
+                    color: #fff;
+                    background-color: #6198b6;
+                    padding: 5px 0;
+                    font-size: 12px;
+                }
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background-color: rgb(228, 243, 255);
+                }
+                td {
+                    padding: 3px 1px;
+
+                    input, select {
+                        height: 25px;
+                        padding: 0 5px !important;
+                    }
+                    input[type="number"] {
+                        //text-align: right;
+                    }
+                    label {
+                        font-size: inherit;
+                    }
+                    .right-align {
+                        text-align: right;
+                        display: block;
+                    }
+                    .center-align {
+                        text-align: center;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+
+    /****************************************
+                React Date Picker
+    ****************************************/
+    .date-container {
+        .fa, .far {
+            position: absolute;
+            z-index: 1;
+            font-size: 18px;
+            padding: 11px 9px;
+            color: #00a4e4;
+        }
+
+        input {
+            padding-left: 35px;
+        }
+    }
+
+    .react-datepicker-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    .react-datepicker__input-container {
+        width: 100%;
+    }
+    .react-datepicker-wrapper button, .react-datepicker-wrapper input[type=button], 
+    .react-datepicker-wrapper input[type=reset], .react-datepicker-wrapper input[type=submit], 
+    .react-datepicker button, .react-datepicker input[type=button], .react-datepicker input[type=reset], 
+    .react-datepicker input[type=submit] {
+        background-color: none!important;
+        margin-left: 0!important;
+        min-width: 0!important;
+        padding: 0!important;
+    }
+    .react-datepicker__close-icon::after {
+        padding: 1px;
+    }
+
+    /****************************************
+                React Select
+    ****************************************/
+    .Select-control {
+        background-color: #f9fcfd;
+    }
+    .Select-input {
+        height: 39px;
+        
+        > input {
+            padding: 12px 0;
+        }
+    }
+    .Select-placeholder, .Select--single > .Select-control .Select-value {
+        line-height: 39px;
+    }
+    .Select--multi .Select-value {
+        margin-top: 9px;
+    }
+
+    /****************************************
+                General Styles
+    ****************************************/
+    .tool-tip {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        min-width: 160px;
+        text-align: center;
+        background-color: #364a5a;
+        color: #ffffff;
+        padding: 7px;
+        border-radius: 5px;
+        left: 50%;
+        transform: translate(-50%, -115%);
+
+        &:after {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 6px 0 6px;
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            border-color: #364a5a transparent transparent transparent;
+        }
+    }
+
+    .line-break {
+        background-color: rgba(0,0,0,0.1);
+        width: 100%;
+        height: 1px;
+        margin: 20px 0;
+
+        &.no-background {
+            background-color: transparent;
+        }
+    }
+    .footer-note {
+        margin: 10px 0 0 0;
+        font-weight: 300;
+
+        &.right {
+            text-align: right;
+        }
+    }
+
+    label, .mock-label {
+        display: block;
+        font-weight: 400;
+        margin-bottom: 3px;
+        font-size: 0.75rem;
+        line-height: 18px;
+        position: relative;
+
+        > span.required:after {
+            content: '*';
+            font-size: 18px;
+            vertical-align: sub;
+            color: red;
+        }
+    }
+    label + span, .mock-label + span, .input-placeholder {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        line-height: 19px;
+        border: 1px solid rgb(214, 214, 214);
+        border-radius: 3px;
+        background-color: #eeeeee;
+        white-space: nowrap;
+        min-height: 39px;
+        color: #666666;
+    }
+
+    .sub-header {
+        font-weight: 500;
+        display: block;
+    }
+    .sub-header:not(:first-child) {
+        margin-top: 2rem;
+    }
+}
+
+/****************************************
+        SharePoint page overrides
+****************************************/
+body {
+    background-color: #fbfcff;
+}
+.ms-core-overlay {
+    background-color: transparent;
+}
+#s4-bodyContainer {
+    background-color: #fbfcff;
+}
+.ms-webpartPage-root {
+    border-spacing: 5px 0 !important;
+}
+#DeltaPlaceHolderMain > div:nth-child(2) {
+    display: table;
+    border-spacing: 5px 0;
+    width: 100%;
+}

@@ -24,6 +24,8 @@ This application is written using ReactJS and compiled using WebpackJS
 - [Styled Components](#styled-components)
 	- [Styled Container](#styled-container)
 	- [Styled Row](#styled-row)
+- [Themes](#themes)
+    - [Assimilate](#assimilate-theme)
 
 ## Getting Started
 
@@ -356,7 +358,7 @@ export default class MyComponent extends React.Component {
 Listed below are all the styled components available in this boilerplate. Each component should have a short description of what it does, all the props available for this component, and an example of how to use it.
 
 ### Styled Container
-The Styled Container come with a bunch of preset CSS styles that should help make your application look better without having to write very much CSS yourself. Styled Container is often used in conjunction with Styled Row, however this is not necessary.
+Styled Container gives you a HTML section element with some styles to make it look nice. Styled Container is often used in conjunction with Styled Row, however this is not necessary.
 
 ##### Props
 | Prop Name   | Type     | Default                     | Description                                                                             |
@@ -390,7 +392,7 @@ export default class MyComponent extends React.Component {
 
 
 ### Styled Row
-To receive the proper effects of the Styled Row it must be used within a Styled Container. Using it on its own will only result in your application receiving useless markup.
+Styled row uses flex to align all element inside along a horizontal row. These elements can be 'even-spaced', 'seven-one', 'one-five', 'five-one', and 'one-third'. To add your own grid, add some styles to 'styled-row.scss' in the common/styles folder.
 
 ##### Props
 | Prop Name   | Type     | Default                | Description                                                                             |
@@ -434,6 +436,38 @@ export default class MyComponent extends React.Component {
                         </div>
                     </StyledRow>
                 </StyledContainer>
+            </div>
+        )
+    }
+}
+
+```
+
+
+
+
+
+
+## Themes
+Listed below are all the themes available in this boilerplate. Each theme should have a short description of what it does and an example of how to use it.
+
+### Assimilate Theme
+Assimilate is a basic theme to style form elements and alter the background color of your SharePoint page to be a soft gray color.
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import '../common/styles/assimilate-theme.scss';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="application assimilate-theme">
+                This is my application
             </div>
         )
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter, Route, Link } from "react-router-dom";
 import { Home, About, ReduxCounter } from '../../components';
 
+import '../common/styles/assimilate-theme.scss';
 import './styles/application.scss';
 
 export default class Application extends React.Component {
@@ -12,7 +13,7 @@ export default class Application extends React.Component {
     render() {
         return (
             <HashRouter>
-                <div className="Application">
+                <div className="Application assimilate-theme">
                     <nav className="site-navigation">
                         <ul>
                             <li><Link to="/">Home</Link></li>
