@@ -8,7 +8,7 @@ export default class StyledRow extends React.Component {
 
     render() {
         return (
-            <div className={`row ${this.props.rowType}`}>
+            <div className={`StyledRow ${this.props.rowType}`}>
                 {this.props.children}
             </div>
         )
@@ -16,5 +16,5 @@ export default class StyledRow extends React.Component {
 }
 
 StyledRow.defaultProps = {
-    rowType: 'even-spaced'
+    rowType: ''
 }

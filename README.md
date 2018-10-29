@@ -392,12 +392,12 @@ export default class MyComponent extends React.Component {
 
 
 ### Styled Row
-Styled row uses flex to align all element inside along a horizontal row. These elements can be 'even-spaced', 'seven-one', 'one-five', 'five-one', and 'one-third'. To add your own grid, add some styles to 'styled-row.scss' in the common/styles folder.
+Styled row uses flex to align all element inside along a horizontal row. A more detailed explanation of how to use the grid system can be found at [FlexboxGrid](https://github.com/kristoferjoseph/flexboxgrid)
 
 ##### Props
-| Prop Name   | Type     | Default                | Description                                                                             |
-|-------------|----------|------------------------|-----------------------------------------------------------------------------------------|
-| rowType     | String   | 'even-spaced'          | When there is a new user selected the on change event will return all users in an array |
+| Prop Name   | Type     | Default | Description                                                                                                   |
+|-------------|----------|---------|---------------------------------------------------------------------------------------------------------------|
+| rowType     | String   | ''      | The type of row you want. 'reverse', 'start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between' |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
@@ -415,23 +415,23 @@ export default class MyComponent extends React.Component {
             <div>
                 <StyledContainer>
                     {/* Even spaced columns */}
-                    <StyledRow rowType="even-spaced">
-                        <div>
+                    <StyledRow>
+                        <div className="col">
                              <span>Column 1</span>
                         </div>
 
-                        <div>
+                        <div className="col">
                              <span>Column 2</span>
                         </div>
                     </StyledRow>
 
                     {/* Seven to one column ratio */}
-                    <StyledRow rowType="seven-one">
-                        <div>
+                    <StyledRow rowType="reverse">
+                        <div className="col">
                              <input type="text"/>
                         </div>
 
-                        <div>
+                        <div className="col-2">
                              <button>Save</button>
                         </div>
                     </StyledRow>
