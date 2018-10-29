@@ -18,7 +18,7 @@ export default class Home extends React.Component {
                     )}
                 >
                     {/*Row 1*/}
-                    <StyledRow rowType='even-spaced'>
+                    <StyledRow>
                         <div>
                             <label>Column 1</label>
                             <input type="text"/>
@@ -55,9 +55,9 @@ export default class Home extends React.Component {
                     className="AnotherSection"
                 >
 
-                    <StyledRow rowType='even-spaced'>
+                    <StyledRow>
                         <div>
-                            <table className="expenditures-table">
+                            <table>
                                 {/* Header */}
                                 <thead>
                                     <tr>
@@ -72,7 +72,7 @@ export default class Home extends React.Component {
                                 <tbody>
                                     {/* CAPEX */}
                                     <tr>
-                                        <td><label className="required">CAPEX (Not including IDC)</label></td>
+                                        <td><label className="required">Row 1</label></td>
                                         <td><span>0.00</span></td>
                                         <td><input type="number" /></td>
                                         <td><input type="number" /></td>
@@ -82,7 +82,7 @@ export default class Home extends React.Component {
 
                                     {/* IDC */}
                                     <tr>
-                                        <td><label>IDC (Intrest During Construction)</label></td>
+                                        <td><label>Row 2</label></td>
                                         <td><span>0.00</span></td>
                                         <td><input type="number" /></td>
                                         <td><input type="number" /></td>
@@ -92,7 +92,7 @@ export default class Home extends React.Component {
 
                                     {/* OPEX */}
                                     <tr>
-                                        <td><label className="required">OPEX</label></td>
+                                        <td><label className="required">Row 3</label></td>
                                         <td><span>0.00</span></td>
                                         <td><input type="number" /></td>
                                         <td><input type="number" /></td>
@@ -102,7 +102,7 @@ export default class Home extends React.Component {
 
                                     {/* Total */}
                                     <tr>
-                                        <td><label>Total Expenditures</label></td>
+                                        <td><label>Total</label></td>
                                         <td><span>0.00</span></td>
                                         <td><span className="right-align">0.00</span></td>
                                         <td><span className="right-align">0.00</span></td>
