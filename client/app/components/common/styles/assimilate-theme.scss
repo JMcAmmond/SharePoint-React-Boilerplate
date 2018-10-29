@@ -79,6 +79,14 @@
             color: #666666;
         }
     }
+
+    *:not(.Select-input) > input[type="number"] {
+        text-align: right;
+
+        &:focus {
+            text-align: left;
+        }
+    }
     textarea {
         max-width: 100%;
         min-width: 100%;
@@ -87,7 +95,7 @@
         background-color: #f9fcfd;
     }
     button:not([class^="react-datepicker_"]) {
-        margin-left: 5px;
+        margin: 3px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         padding: 7px 10px;
         font-weight: 700;
@@ -145,9 +153,6 @@
                     input, select {
                         height: 25px;
                         padding: 0 5px !important;
-                    }
-                    input[type="number"] {
-                        //text-align: right;
                     }
                     label {
                         font-size: inherit;
