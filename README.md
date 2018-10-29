@@ -392,7 +392,7 @@ export default class MyComponent extends React.Component {
 
 
 ### Styled Row
-Styled row uses flex to align all element inside along a horizontal row. A more detailed explanation of how to use the grid system can be found at [FlexboxGrid](https://github.com/kristoferjoseph/flexboxgrid)
+Styled row uses flex to align all element inside along a horizontal row. A more detailed explanation of how to use the grid system can be found at [FlexboxGrid](https://github.com/kristoferjoseph/flexboxgrid). (Note: This is not a responsive grid system so all columns remove screen size. col-xs-2 now becomes col-2)
 
 ##### Props
 | Prop Name   | Type     | Default | Description                                                                                                   |
