@@ -397,7 +397,7 @@ Styled row uses flex to align all element inside along a horizontal row. A more 
 ##### Props
 | Prop Name   | Type     | Default | Description                                                                                                   |
 |-------------|----------|---------|---------------------------------------------------------------------------------------------------------------|
-| rowType     | String   | ''      | The type of row you want. 'reverse', 'start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between' |
+| rowType     | String   | -       | The type of row you want. 'reverse', 'start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between' |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
