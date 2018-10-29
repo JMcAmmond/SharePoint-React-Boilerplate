@@ -425,7 +425,7 @@ export default class MyComponent extends React.Component {
                         </div>
                     </StyledRow>
 
-                    {/* Seven to one column ratio */}
+                    {/* Reverse columns */}
                     <StyledRow rowType="reverse">
                         <div className="col">
                              <input type="text"/>
