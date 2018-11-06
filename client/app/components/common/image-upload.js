@@ -1,6 +1,5 @@
 import React from 'react';
-import * as Utils from '../../lib/utils';
-
+import { detectIE } from '../../lib/utils';
 import './styles/image-upload.scss';
 
 export default class ImageUpload extends React.Component {
@@ -13,7 +12,7 @@ export default class ImageUpload extends React.Component {
     }
 
     /**
-     *
+     * Return the dropped image if the conditions are met
      * @param event
      */
     onImageChange(event) {
@@ -58,7 +57,6 @@ export default class ImageUpload extends React.Component {
 
         return (
             <div className="ImageUpload">
-
                 <div className="image-container">
                     <div className="drop-zone" style={dropzone}>
 
@@ -95,21 +93,20 @@ export default class ImageUpload extends React.Component {
                          * Shown then state is not uploading
                          */}
                         <label htmlFor="file">
-                            {!Utils.detectIE() && (
+                            {!detectIE() && (
                                 <p>
                                     <strong>Choose an image</strong>
                                     <span className="dragndrop"> or drag it here</span>.
                                 </p>
                             )}
 
-                            {Utils.detectIE() && (
+                            {detectIE() && (
                                 <p><strong>Click here to choose an image</strong></p>
                             )}
                         </label>
 
                     </div>
                 </div>
-
             </div>
         )
     }

@@ -77,8 +77,6 @@
         flex-direction: column-reverse;
     }
 
-    > div[class=""], 
-    > div:not([class]),
     .col,
     .col-1,
     .col-2,
@@ -104,7 +102,9 @@
     .col-offset-9,
     .col-offset-10,
     .col-offset-11,
-    .col-offset-12 {
+    .col-offset-12,
+    > div[class=""], 
+    > div:not([class]) {
         box-sizing: border-box;
         -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;

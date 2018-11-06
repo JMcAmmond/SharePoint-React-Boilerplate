@@ -13,12 +13,20 @@ export default class Comments extends React.Component {
         this.onCommentAdd = this.onCommentAdd.bind(this);
     }
 
+    /**
+     * When the comments textarea changes, store the new value
+     * @param {Event} e 
+     */
     onCommentsChange(e) {
         this.setState({
             newComment: e.currentTarget.value,
         });
     }
 
+    /**
+     * When a new comment is added timestamp it and generate the markup
+     * Return the comment markup to the parent
+     */
     onCommentAdd() {
         let timeStamp = moment().format('MMMM Do YYYY, h:mm:ss a');
         let user = _spPageContextInfo.userDisplayName;
@@ -30,6 +38,7 @@ export default class Comments extends React.Component {
             </div>
         `;
 
+        //Reset the comment textarea
         this.setState({
             newComment: ""
         });

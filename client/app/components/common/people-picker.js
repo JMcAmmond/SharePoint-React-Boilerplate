@@ -1,10 +1,8 @@
 import React from 'react';
 import Api from '../../lib/api';
 import Select from 'react-select';
-import findIndex from 'lodash/findIndex';
 import isEmpty from 'lodash/isEmpty';
 import 'react-select/dist/react-select.css';
-
 
 export default class PeoplePicker extends React.Component {
     constructor(props) {
@@ -23,10 +21,7 @@ export default class PeoplePicker extends React.Component {
         }
         else {
             //Get the last user in the array or the only user
-            let userToEnsure = users.length 
-                ? users.pop()
-                : users;
-
+            let userToEnsure = users.length ? users.pop() : users;
             this.ensureSingleUser(userToEnsure, users);
         }
     }
