@@ -263,42 +263,50 @@ export default class MyComponent extends React.Component {
 ```
 
 ### Modal
-Creates a modal that sits on top of your page.
+Creates a modal that sits on top of your page. 'ModalContainer' must be mounted before calling 'modal.show' otherwise nothing will happen. 
 
 ##### Props
+
+*ModalContainer*
+
 | Prop Name      | Type     | Default                                      | Description                                       |
 |----------------|----------|----------------------------------------------|---------------------------------------------------|
-| closeModal     | Function | -                                            | Function to call when the close button is clicked |
 | closeLabel     | String   | '×'                                          | Close button label                                |
-| className      | String   | ''                                           | Optional class names                              |
+
+*modal*
+
+| Method         | Params           | Example                                                  |
+|----------------|------------------|----------------------------------------------------------|
+| show           | content, options | modal.show( <p>My Modal</p>, { closeLable: 'close' } )   |
+| close          | -                | modal.close()                                            |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
 ```jsx
-import Modal from '../common/modal';
+import React from 'react';
+import { ModalContainer, modal } from '../../common/modal';
 
-export default class MyComponent extends React.Component {
+export default class ModalView extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showModal: false
-        }
     }
 
-    handleCloseModal() {
-        this.setState({
-            showModal: false
-        });
+    showModal() {
+        modal.show(
+            <div>
+                <h1>This is a modal</h1>
+                <p>This is the content of the modal</p>
+                <button type="button" onClick={() => {modal.close()} }> // Custom close action
+            </div>
+        )
     }
 
     render() {
         return (
             <div>
-                {this.state.showModal && (
-                    <Modal closeModal={this.handleCloseModal.bind(this)}>
-                        <h1>This is my modal</h1>
-                    </Modal>
-                )}
+                <button type="button" onClick={this.showModal.bind(this)}>Show Modal</button>
+
+                <ModalContainer/> // Must be mounted before using modal.show
             </div>
         )
     }
