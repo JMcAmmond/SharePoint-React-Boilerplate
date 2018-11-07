@@ -296,7 +296,7 @@ export default class ModalView extends React.Component {
             <div>
                 <h1>This is a modal</h1>
                 <p>This is the content of the modal</p>
-                <button type="button" onClick={() => {modal.close()} }> // Custom close action
+                <button type="button" onClick={() => {modal.close()} }>Close Modal</button> // Custom close action
             </div>
         )
     }
