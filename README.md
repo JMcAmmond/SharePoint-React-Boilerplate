@@ -21,6 +21,7 @@ This application is written using ReactJS and compiled using WebpackJS
 	- [Iframe](#iframe)
     - [Modal](#modal)
     - [Comments](#comments)
+    - [Attachments](#attachments) 
 - [Styled Components](#styled-components)
 	- [Styled Container](#styled-container)
 	- [Styled Row](#styled-row)
@@ -319,7 +320,7 @@ Creates a textarea where comments can be added and a section where previous comm
 ##### Props
 | Prop Name          | Type     | Default                                      | Description                                       |
 |--------------------|----------|----------------------------------------------|---------------------------------------------------|
-| comments           | String   | ''                                           | String of comments                                |
+| comments           | Array    | []                                           | Array of comments                                 |
 | commentLabel       | String   | 'Comments'                                   | Comment section label                             |
 | onAddComment       | Function | -                                            | Returns the markup for a new comment              |
 | disabled           | Boolean  | false                                        | Is the add comment button disabled                |
@@ -334,14 +335,16 @@ export default class MyComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comments: ""
+            comments: []
         }
     }
 
-    onCommentAdd(markup) {
+    onCommentAdd(obj) {
         let comments = this.state.comments;
+            comments.push(obj);
+            
         this.setState({
-            comments: comment + markup
+            comments: comments
         });
     }
 
@@ -357,6 +360,63 @@ export default class MyComponent extends React.Component {
     }
 }
 ```
+
+### Attachments
+Creates a input field where users can search for attachments and an attachments container for viewing attachments
+
+##### Props
+| Prop Name          | Type     | Default                                                    | Description                                       |
+|--------------------|----------|------------------------------------------------------------|---------------------------------------------------|
+| itemId             | Number   | null                                                       | Item id for attached files                        |
+| listName           | String   | null                                                       | List name where item exists                       |
+| multiple           | Boolean  | false                                                      | Allow multiple uploads at once                    |
+| disableUpload      | Boolean  | false                                                      | Should the input field be disabled                |
+| disableRemove      | Boolean  | false                                                      | Should the remove button be disabled              |
+| uploadVisible      | Boolean  | true                                                       | Should the upload container be visible            |
+| attachmentsVisible | Boolean  | true                                                       | Should the attachments be visible                 |
+| limit              | Number   | null                                                       | Max number of attachments                         |
+| notice             | String   | 'Form must be saved before file attachments can be added.' | Notice when itemId and listName are not present   |
+| attachmentsLabel   | String   | 'Attachments'                                              | Label to display above attachments                |
+| uploadLabel        | String   | 'File Upload'                                              | Label to display above upload container           |
+| accept             | Array    | []                                                         | Array or string containing accepted file types    |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import React from 'react';
+import Comments from '../common/attachments';
+
+export default class AttachmentsView extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <Attachments
+                    itemId={1}
+                    listName="ExampleList"
+                    multiple={true}
+                    limit={5}
+                    accept={['application/pdf']}
+                    disableUpload={false}
+                    disableRemove={false}
+                    uploadVisible={true}
+                    attachmentsVisible={true}
+                />
+            </div>
+        )
+    }
+}
+```
+
+
+
+
+
+
+
 
 
 

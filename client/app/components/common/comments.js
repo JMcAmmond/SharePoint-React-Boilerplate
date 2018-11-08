@@ -13,37 +13,26 @@ export default class Comments extends React.Component {
         this.onCommentAdd = this.onCommentAdd.bind(this);
     }
 
-    /**
-     * When the comments textarea changes, store the new value
-     * @param {Event} e 
-     */
     onCommentsChange(e) {
         this.setState({
             newComment: e.currentTarget.value,
         });
     }
 
-    /**
-     * When a new comment is added timestamp it and generate the markup
-     * Return the comment markup to the parent
-     */
     onCommentAdd() {
-        let timeStamp = moment().format('MMMM Do YYYY, h:mm:ss a');
+        let timeStamp = moment().toISOString();
         let user = _spPageContextInfo.userDisplayName;
-        let markup = `
-            <div class="comment">
-                <span class="user">${user}</span>
-                <span class="timestamp">${timeStamp}</span>
-                <p class="body">${replaceLineBreak(this.state.newComment)}</p>
-            </div>
-        `;
+        let comment = replaceLineBreak(this.state.newComment);
 
-        //Reset the comment textarea
         this.setState({
             newComment: ""
         });
 
-        this.props.onAddComment(markup);
+        this.props.onAddComment({
+            user: user,
+            timeStamp: timeStamp,
+            comment: comment
+        });
     }
 
     render() {
@@ -67,10 +56,20 @@ export default class Comments extends React.Component {
                     </div>
                 )}
 
-                {this.props.comments && (
+                {this.props.comments.length > 0 && (
                     <div>
                         <label>{this.props.commentLabel}</label>
-                        <div className="comment-container" dangerouslySetInnerHTML={{ __html: this.props.comments }}></div>
+                        <div className="comment-container">
+                            {this.props.comments.map((item, i) => {
+                                return(
+                                    <div className="comment" key={i}>
+                                        <span className="user">{item.user}</span>
+                                        <span className="timestamp">{moment(item.timeStamp).format('MMMM Do YYYY, h:mm:ss a')}</span>
+                                        <p className="body" dangerouslySetInnerHTML={{ __html: item.comment }}></p>
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
                 )}
 
@@ -80,7 +79,7 @@ export default class Comments extends React.Component {
 }
 
 Comments.defaultProps = {
-    comments: "",
+    comments: [],
     commentLabel: "Comments",
     disabled: false,
     newCommentsVisible: true
