@@ -224,7 +224,7 @@ export default class Attachments extends React.Component {
 	                            	{this.state.files.d.AttachmentFiles.results.map((item, i) => {
 	                            		return(
 	                            			<li key={i}>
-	                            				<i className={getFontaAwesomeFileIcon(item.FileName)}></i>
+	                            				<i className={getFontAwesomeFileIcon(item.FileName)}></i>
 	                            				<a href={`${item.ServerRelativeUrl}`} target="_blank">{item.FileName}</a>
 	                            				{!this.props.disableRemove && (
 	                            					<button type="button" onClick={() => this.removeFile(item.FileName, i)}>
@@ -260,7 +260,7 @@ Attachments.defaultProps = {
 }
 
 
-function getFontaAwesomeFileIcon(fileName) {
+function getFontAwesomeFileIcon(fileName) {
 	const re = /(?:\.([^.]+))?$/;
 	let ext = re.exec(fileName)[1];
 
