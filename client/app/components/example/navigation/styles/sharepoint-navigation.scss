@@ -1,0 +1,45 @@
+.SharePointNavigation {
+	.nav-toggle {
+		cursor: pointer;
+		padding: 1rem;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		display: inline-block;
+		width: 100%;
+
+		i {
+			transition: 0.2s linear transform;
+
+			&.active {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	#react-nav {
+		background-color: rgb(68, 77, 86);
+	}
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			padding: 8px 15px;
+
+			&:hover {
+				background-color: rgba(92,102,111, 0.5);
+			}
+
+			a {
+				color: #fff !important;
+				background-color: transparent !important;
+				width: 100%;
+				display: block;
+			}
+		}
+
+		.menu-item-text {
+			color: #ffffff !important;
+		}
+	}
+}

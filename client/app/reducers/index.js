@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import * as ReduxCounterReducer from './redux-counter';
+import * as InitializeReducer from './init';
 
 /**
  * Combine all reducers into the combineReducers object
  */
 export default combineReducers(Object.assign(
-    ReduxCounterReducer,
+    InitializeReducer
 ));

@@ -2,29 +2,38 @@
 This application is written using ReactJS and compiled using WebpackJS
 
 - [Getting Started](#getting-started)
-	- [Prerequisites](#prerequisites)
-	- [Installing Node Modules](#installing-node-modules)
+    - [Prerequisites](#prerequisites)
+    - [Installing Node Modules](#installing-node-modules)
 - [WebPack configuration](#webpack-configuration)
-	- [sp-deploy.js](#sp-deployjs)
-	- [sp-config.dev.js / sp-config.prod.js](#sp-configdevjs-sp-configprodjs)
-	- [webpack.config.js](#webpackconfigjs)
-	- [index.html](#indexhtml)
+    - [sp-deploy.js](#sp-deployjs)
+    - [user-creds.json](#user-creds.json)
+    - [sp-config.dev.js / sp-config.prod.js](#sp-configdevjs-sp-configprodjs)
+    - [webpack.config.js](#webpackconfigjs)
+    - [index.html](#indexhtml)
+- [Apps Without Redux](#apps-without-redux)    
 - [Compiling Your Code](#compiling-your-code)
-	- [Development](#development)
-	- [Build](#build)
-	- [Deployment](#deployment)
+    - [Development](#development)
+    - [Build](#build)
+    - [Deployment](#deployment)
 - [NPM Commands](#npm-commands)
 - [Useful Resources](#useful-resources)
 - [Functional Components](#functional-components)
-	- [People Picker](#people-picker)
-	- [Image Upload](#image-upload)
-	- [Iframe](#iframe)
+    - [People Picker](#people-picker)
+    - [Image Upload](#image-upload)
+    - [Iframe](#iframe)
+    - [Collapsible](#collapsible)
+    - [FormLabel](#formlabel)
     - [Modal](#modal)
     - [Comments](#comments)
     - [Attachments](#attachments) 
+    - [Signature Canvas](#signature-canvas)
+    - [Error Boundary](#error-boundary)
 - [Styled Components](#styled-components)
-	- [Styled Container](#styled-container)
-	- [Styled Row](#styled-row)
+    - [Styled Container](#styled-container)
+    - [Styled Row](#styled-row)
+    - [Loading Animation](#loading-animation)
+- [Utils](#utils)
+    - [Scroll To Top](#scroll-to-top)
 - [Themes](#themes)
     - [Assimilate](#assimilate-theme)
 
@@ -46,8 +55,24 @@ There are some files that you will need to update before so start compiling your
 - *spFolder*
   - This is the path where you would like to upload files on SharePoint. (Ex. SiteAssets/Scripts/Test)
 
+#### user-creds.json
 - *username/password*
-  - These are you SharePoint sign on credentials. (Ex. my_name@mycompany.com, SuperSecretPassword123)
+    ```json
+    {
+        "username": "",
+        "password": ""
+    }
+    ```
+
+or
+
+- *clientId/clientSecret*
+    ```json
+    {
+        "clientId": "",
+        "clientSecret": ""
+    }
+    ```
 
 #### sp-config.dev.js / sp-config.prod.js
 - *siteUrl*
@@ -64,6 +89,8 @@ There are some files that you will need to update before so start compiling your
 - *script links*
   - Both script links will need to link to your project files. Only bundle.js and config.js are required to get your application to load.
 
+## Apps Without Redux
+Remove `./client/index.js` and rename `./client/index-no-redux.js` to `./client/index.js`.
 
 ## Compiling Your Code
 #### Development
@@ -180,13 +207,14 @@ export default class MyComponent extends React.Component {
 
 
 ### Image Upload
-This ImageUpload component is a simple drop target that allows for images under 800kb in size. When an image is dropped or selected from the drop target then the component will return the whole image blob to the parent. Supplying an image property will allow the user to see a preview of the image that they have selected.
+This ImageUpload component is a simple drop target that allows for images under a set file size limit. When an image is dropped or selected from the drop target then the component will return the whole image blob to the parent. Supplying an image property will allow the user to see a preview of the image that they have selected.
 
 ##### Props
 | Prop Name      | Type     | Default     | Description                                                                                           |
 |----------------|----------|-------------|-------------------------------------------------------------------------------------------------------|
 | onImageChange  | Function | -           | When an image under 800kb is drop/selected the event with the new image will be returned              |
 | image          | URL      | -           | This is the url/data uri of an image. Usually its the image being uploaded but you can send anything. |
+| fileSizeLimit  | Number   | 800000      | File size limit is represented in bytes																  |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
@@ -225,6 +253,7 @@ export default class MyComponent extends React.Component {
                 <ImageUpload
                     onImageChange={this.onImageChange.bind(this)}
                     image={this.state.image}
+                    fileSizeLimit={500000}
                 />
             </div>
         )
@@ -263,6 +292,95 @@ export default class MyComponent extends React.Component {
 }
 ```
 
+### Collapsible
+Generates a collapsible container with header.
+
+```
+Install using
+
+> npm install react-collapsible
+```
+
+#### Props
+
+| Prop Name | Type    | Default | Description                     |
+|-----------|------   |---------|---------------------------------|
+| trigger   | String  |  ""     | Label for the container header  |
+| open      | Boolean | true    | Condition for being open        |
+
+Full list of props at [React-Collapsible](https://www.npmjs.com/package/react-collapsible).
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import Collapsible from 'react-collapsible';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const isOpen = true;
+
+        return (
+            <div>
+                <Collapsible trigger="My Header" open={isOpen}>
+                    My Content
+                </Collapsible>
+            </div>
+        )
+    }
+}
+```
+
+
+### FormLabel
+Creates a label with an error message when either a pattern is not matched or the reference field is required but empty.
+
+#### Props
+
+| Prop Name     | Type    | Default | Description                     |
+|---------------|---------|---------|---------------------------------|
+| label         | String  | ""      | Text for the label              |
+| message       | String  | ""      | Text for pattern error message  |
+| requiredLabel | String  | "*"     | Text for required error message |
+| pattern       | RegExp  | /./     | Regular expression to match     |
+| required      | Boolean | false   | Is the field required           |
+| value         | *       | ""      | Value to check                  |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+
+import FormLabel from '../common/form-label';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            Title: "Hello"
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <FormLabel 
+                    label="Title" 
+                    value={this.state.Title} 
+                    required={true} 
+                    pattern={/^([a-z0-9]){1,7}(,[a-z0-9]{1,7})*$/} 
+                    message="Must less than 8 characters and comma separated (no spaces)"
+                />
+                <input type="text" value={this.state.Title}/>
+            </div>
+        )
+    }
+}
+```
+
 ### Modal
 Creates a modal that sits on top of your page. 'ModalContainer' must be mounted before calling 'modal.show' otherwise nothing will happen. 
 
@@ -278,14 +396,24 @@ Creates a modal that sits on top of your page. 'ModalContainer' must be mounted 
 
 | Method         | Params           | Example                                                  |
 |----------------|------------------|----------------------------------------------------------|
-| show           | content, options | modal.show( <p>My Modal</p>, { closeLable: 'close' } )   |
+| show           | content, options | modal.show( <p>My Modal</p> )                            |
 | close          | -                | modal.close()                                            |
+| closeLabel     | -                | modal.show( <p>My Modal</p>, { closeLable: 'close' } )   |
+| hideClose      | -                | modal.show( <p>My Modal</p>, { hideClose: true } )       |
 
 ##### Usage
 [//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
 ```jsx
 import React from 'react';
 import { ModalContainer, modal } from '../../common/modal';
+
+const MyModal = () => {
+    <div>
+        <h1>This is a modal</h1>
+        <p>This is the content of the modal</p>
+        <button type="button" onClick={() => {modal.close()} }>Close Modal </button> // Custom close action
+    </div>
+}
 
 export default class ModalView extends React.Component {
     constructor(props) {
@@ -294,11 +422,7 @@ export default class ModalView extends React.Component {
 
     showModal() {
         modal.show(
-            <div>
-                <h1>This is a modal</h1>
-                <p>This is the content of the modal</p>
-                <button type="button" onClick={() => {modal.close()} }>Close Modal</button> // Custom close action
-            </div>
+            <MyModal/>, { hideClose: true }
         )
     }
 
@@ -411,6 +535,83 @@ export default class AttachmentsView extends React.Component {
 }
 ```
 
+### Signature Canvas
+Displays a canvas element where people can put in the signature
+
+##### Props
+| Prop Name          | Type     | Default              | Description                                       |
+|--------------------|----------|----------------------|---------------------------------------------------|
+| id                 | String   | 'canvas'             | The id for your canvas                            |
+| width              | Number   | 600                  | Width of your canvas (ex, {600})                  |
+| height             | Number   | 200                  | Width of your canvas (ex, {200})                  |
+| onChange           | Function | -                    | Returns the canvas reference object               |
+| src                | String   | ""                   | Preload an image to the canvas                    |
+| disabled           | Boolean  | false                | disable editing the canvas                        |
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import React from 'react';
+import SignatureCanvas from '../common/signature-canvas';
+
+export default class SignatureCanvasView extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            canvas: null
+        }
+    }
+
+    onCanvasChange(canvas) {
+        this.setState({
+            canvas: canvas
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <SignatureCanvas
+                    onChange={this.onCanvasChange.bind(this)}
+                />
+            </div>
+        )
+    }
+}
+```
+
+### Error Boundary
+Catches errors that thrown within children components
+
+##### Props
+none
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import React from 'react';
+import ErrorBoundary from '../common/error-boundary';
+
+export default class ErrorBoundaryView extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <ErrorBoundary>
+                    <SomeOtherComponent/>
+                </ErrorBoundary>
+            </div>
+        )
+    }
+}
+```
+
+
+
+
 
 
 
@@ -426,7 +627,7 @@ export default class AttachmentsView extends React.Component {
 Listed below are all the styled components available in this boilerplate. Each component should have a short description of what it does, all the props available for this component, and an example of how to use it.
 
 ### Styled Container
-Styled Container gives you a HTML section element with some styles to make it look nice. Styled Container is often used in conjunction with Styled Row, however this is not necessary.
+Styled Container is often used in conjunction with Styled Row, however this is not necessary.
 
 ##### Props
 | Prop Name   | Type     | Default                     | Description                                                                             |
@@ -504,6 +705,75 @@ export default class MyComponent extends React.Component {
                         </div>
                     </StyledRow>
                 </StyledContainer>
+            </div>
+        )
+    }
+}
+
+```
+
+
+### Loading Animation
+The loading animation simply displays a styled CSS loading animation. This component requires no props and is used just for styling.
+
+##### Props
+none
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import LoadingAnimation from '../common/loading-animation';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isReady: false
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.isReady && (
+                    <span>My Application</span>
+                )}
+
+                {!this.state.isReady && (
+                    <LoadingAnimation/>
+                )}
+            </div>
+        )
+    }
+}
+
+```
+
+
+
+## Utils
+Listed below are all the utils available in this boilerplate. Each util should have a short description of what it does, how to interact with it, and an example of how to use it.
+
+### Scroll To Top
+Scroll to top is a function that can be called to smooth scroll the window to the very top of the page.
+
+##### Parameters
+none
+
+##### Usage
+[//]: # (When writing code examples, please use spaces and not tabs when indenting code.)
+```jsx
+import * as Utils from '../../lib/utils';
+
+export default class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <button type="button" onClick={Utils.scrollToTop}>Back to top</button>
             </div>
         )
     }

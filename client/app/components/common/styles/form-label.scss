@@ -1,0 +1,21 @@
+.error-message {
+    color: red;
+    font-size: 8pt;
+    margin-left: 3px;
+    font-weight: 400;
+    margin-bottom: 3px;
+    line-height: 18px;
+}
+
+.error-container {
+    display: flex;
+}
+
+.form-label {
+    font-weight: bold !important;
+}
+
+.form-label-children {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+}

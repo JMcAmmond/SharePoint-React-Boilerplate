@@ -2,6 +2,7 @@
  * Define action types
  */
 
-//Redux Counter
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+// Initialize
+export const INITIALIZED = 'INITIALIZED';
+export const FAILED = 'FAILED';
+export const RESTRICTED = 'RESTRICTED';

@@ -43,14 +43,18 @@ export class ModalContainer extends React.Component {
                         <div className="Modal--background"></div>
                         <div className="Modal--content">
 
-                            {this.state.modal.closeLabel !== undefined ? (
-                                <span className="Modal--close-custom" onClick={() => {this.closeModal()} }>
-                                    {this.state.modal.closeLabel}
-                                </span>
-                            ) : (
-                                <span className="Modal--close" onClick={() => {this.closeModal()} }>
-                                    {this.props.closeLabel}
-                                </span>
+                            {!this.state.modal.hideClose && (
+                                <React.Fragment>
+                                    {this.state.modal.closeLabel !== null ? (
+                                        <span className="Modal--close-custom" onClick={() => {this.closeModal()} }>
+                                            {this.state.modal.closeLabel}
+                                        </span>
+                                    ) : (
+                                        <span className="Modal--close" onClick={() => {this.closeModal()} }>
+                                            {this.props.closeLabel}
+                                        </span>
+                                    )}
+                                </React.Fragment>
                             )}
 
                             {this.state.modal.content}
@@ -64,7 +68,12 @@ export class ModalContainer extends React.Component {
 }
 
 export const modal = {
+    options: {
+        closeLabel: null,
+        hideClose: false
+    },
     show: function(content, options) {
+        options = Object.assign(this.options, options);
         eventManager.emit('ACTION.SHOW.MODAL', Object.assign({content: content}, options));
     },
     close: function() {

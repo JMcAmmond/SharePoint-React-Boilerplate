@@ -74,15 +74,16 @@
 				    width: 25px;
 				    height: 25px;
 				    background-color: transparent;
-				    border: 2px solid #d02828;
+				    border: 2px solid #de6565;
 				    display: flex;
 				    justify-content: center;
 				    margin-left: auto;
+				    transform: scale(0.8);
 
 					i {
 					    margin: 0;
 					    font-size: 16px;
-					    color: #d02828;
+					    color: #de6565;
 					    margin-left: 1px;
 					    margin-right: 0!important;
 					}

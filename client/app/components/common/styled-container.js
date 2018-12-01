@@ -8,7 +8,8 @@ export default class StyledContainer extends React.Component {
 
     render() {
         return (
-            <section className={`StyledContainer ${this.props.className}`}>    
+            <section className={`StyledContainer ${this.props.className}`}>
+                
                 {(this.props.title || this.props.description) && (
                     <div className="section-title">
                         <span className="title">{this.props.title}</span>
@@ -17,9 +18,11 @@ export default class StyledContainer extends React.Component {
                         )}
                     </div>
                 )}
+
                 <div className="section-body">
                     { this.props.children }
                 </div>
+                
             </section>
         )
     }

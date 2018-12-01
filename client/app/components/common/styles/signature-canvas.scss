@@ -1,0 +1,19 @@
+.SignatureCanvas {
+	.canvas-block { 
+        margin: 0 auto;
+		position: relative;
+
+	    canvas { 
+		    touch-action: none;
+		    border:2px dashed #aaa; 
+		    border-radius: 3px;
+		}
+
+		.canvas-buttons { 
+		    button {
+				width: 100%;
+			    margin: 0;
+		    }
+		}
+	}
+}

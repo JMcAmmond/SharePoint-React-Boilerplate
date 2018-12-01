@@ -5,16 +5,14 @@ let env = minimist(process.argv.slice(2)).env || null;
 let spConfig = env === 'dist' 
     ? require('./sp-config.prod.js') 
     : require('./sp-config.dev.js');
+let userCreds = require('./user-creds.json');
 
 /**
  * Upload files to SharePoint
  */
 (function () {
     const spFolder = 'SiteAssets/Scripts/{Project Dir}';        // SiteAssets/Scripts/Test
-    const creds = {
-        "username": "",
-        "password": ""
-    };
+    const creds = userCreds;
 
     if (spConfig.coreOptions.siteUrl === '' || Object.keys(creds).length === 0 || spFolder === '') {
         console.log(' ');

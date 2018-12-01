@@ -1,8 +1,9 @@
 import React from 'react';
 import Api from '../../lib/api';
 import Select from 'react-select';
-import isEmpty from 'lodash/isEmpty';
+import findIndex from 'lodash/findIndex';
 import 'react-select/dist/react-select.css';
+import isEmpty from 'lodash/isEmpty';
 
 export default class PeoplePicker extends React.Component {
     constructor(props) {
@@ -21,7 +22,10 @@ export default class PeoplePicker extends React.Component {
         }
         else {
             //Get the last user in the array or the only user
-            let userToEnsure = users.length ? users.pop() : users;
+            let userToEnsure = users.length 
+                ? users.pop()
+                : users;
+
             this.ensureSingleUser(userToEnsure, users);
         }
     }
@@ -35,7 +39,7 @@ export default class PeoplePicker extends React.Component {
         let self = this;
 
         Api.post(
-            `${_spPageContextInfo.webAbsoluteUrl}/_api/web/ensureuser`,
+            `${APP_CONFIG.site.url}/_api/web/ensureuser`,
             {logonName: 'i:0#.f|membership|' + user.value}
         ).then(function(resp) {
             user.id = resp.d.Id;
