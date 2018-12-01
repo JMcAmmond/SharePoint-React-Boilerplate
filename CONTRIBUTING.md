@@ -1,1 +1,1 @@
-Jeff McAmmond, Kelsey Alexander
+Jeff McAmmond and Kelsey Alexander

@@ -16,7 +16,6 @@ This application is written using ReactJS and compiled using WebpackJS
     - [Build](#build)
     - [Deployment](#deployment)
 - [NPM Commands](#npm-commands)
-- [Useful Resources](#useful-resources)
 - [Functional Components](#functional-components)
     - [People Picker](#people-picker)
     - [Image Upload](#image-upload)
@@ -36,6 +35,7 @@ This application is written using ReactJS and compiled using WebpackJS
     - [Scroll To Top](#scroll-to-top)
 - [Themes](#themes)
     - [Assimilate](#assimilate-theme)
+- [Useful Resources](#useful-resources)
 
 ## Getting Started
 
@@ -132,12 +132,6 @@ Used when you are ready to go into production
 > npm run deploy
 ```
 
-## Useful Resources
- - [ReactJS](https://facebook.github.io/react/)
- - [NodeJS](https://nodejs.org/en/)
- - [webpack](https://webpack.github.io/)
- - [SCSS](https://sass-lang.com/)
-
 
 
 
@@ -203,6 +197,9 @@ export default class MyComponent extends React.Component {
 }
 
 ```
+
+##### Screenshot
+![People Picker](screenshots/people-picker.png?raw=true)
 
 
 
@@ -381,6 +378,10 @@ export default class MyComponent extends React.Component {
 }
 ```
 
+##### Screenshot
+![Form Label](screenshots/form-label.png?raw=true)
+
+
 ### Modal
 Creates a modal that sits on top of your page. 'ModalContainer' must be mounted before calling 'modal.show' otherwise nothing will happen. 
 
@@ -438,6 +439,10 @@ export default class ModalView extends React.Component {
 }
 ```
 
+##### Screenshot
+![Modal](screenshots/modal.png?raw=true)
+
+
 ### Comments
 Creates a textarea where comments can be added and a section where previous comments are displayed.
 
@@ -484,6 +489,10 @@ export default class MyComponent extends React.Component {
     }
 }
 ```
+
+##### Screenshot
+![Comments](screenshots/comments.png?raw=true)
+
 
 ### Attachments
 Creates a input field where users can search for attachments and an attachments container for viewing attachments
@@ -535,6 +544,10 @@ export default class AttachmentsView extends React.Component {
 }
 ```
 
+##### Screenshot
+![Attachments](screenshots/attachments.png?raw=true)
+
+
 ### Signature Canvas
 Displays a canvas element where people can put in the signature
 
@@ -580,6 +593,10 @@ export default class SignatureCanvasView extends React.Component {
 }
 ```
 
+##### Screenshot
+![Signature Canvas](screenshots/signature-canvas.png?raw=true)
+
+
 ### Error Boundary
 Catches errors that thrown within children components
 
@@ -609,7 +626,8 @@ export default class ErrorBoundaryView extends React.Component {
 }
 ```
 
-
+##### Screenshot
+![Error Boundary](screenshots/error-boundary.png?raw=true)
 
 
 
@@ -712,6 +730,9 @@ export default class MyComponent extends React.Component {
 
 ```
 
+##### Screenshot
+![Styled Row](screenshots/styled-container-row.png?raw=true)
+
 
 ### Loading Animation
 The loading animation simply displays a styled CSS loading animation. This component requires no props and is used just for styling.
@@ -810,5 +831,13 @@ export default class MyComponent extends React.Component {
         )
     }
 }
-
 ```
+
+
+
+
+## Useful Resources
+ - [ReactJS](https://facebook.github.io/react/)
+ - [NodeJS](https://nodejs.org/en/)
+ - [webpack](https://webpack.github.io/)
+ - [SCSS](https://sass-lang.com/)
